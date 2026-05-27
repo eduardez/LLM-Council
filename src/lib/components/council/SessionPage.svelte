@@ -80,11 +80,16 @@
 		}
 	});
 
-	// Abort streams when hidden
+	// Abort streams and reset state when hidden
 	$effect(() => {
 		if (!isVisible) {
 			abortController?.abort();
 			abortController = null;
+			speeches = [];
+			reviews = [];
+			synthesis = '';
+			displayedSynthesis = '';
+			stage = 'speeches';
 		}
 	});
 

@@ -15,6 +15,7 @@
 	let currentPage = $state<string | null>(null);
 	let menuOpen = $state(false);
 	let question = $state('');
+	let needsConfig = $state(true);
 	let sessionData = $state<{
 		question: string;
 		speeches: Array<{ name: string; speech: string; personaId: number }>;
@@ -26,11 +27,24 @@
 		synthesis: string;
 	} | null>(null);
 
+	function checkConfig() {
+		try {
+			const saved = localStorage.getItem('council_cfg_v2');
+			if (saved) {
+				const data = JSON.parse(saved);
+				needsConfig = !data.token;
+				return;
+			}
+		} catch {}
+		needsConfig = true;
+	}
+
 	onMount(() => {
 		const savedTheme = localStorage.getItem('council_theme');
 		if (savedTheme && savedTheme !== 'parchment') {
 			document.documentElement.className = `theme-${savedTheme}`;
 		}
+		checkConfig();
 	});
 
 	function openPage(page: string) {
@@ -46,6 +60,7 @@
 
 	function closePage() {
 		currentPage = null;
+		checkConfig();
 	}
 
 	function toggleMenu() {
@@ -93,6 +108,7 @@
 		synthesis: string;
 	}) {
 		seated = data.seated;
+		question = data.question;
 		sessionData = {
 			question: data.question,
 			speeches: data.speeches,
@@ -154,6 +170,35 @@
 	style="font-family: var(--font-body);"
 >
 	<HomePage {personas} {seated} {reorderSeats} {openPage} {startSession} isVisible={!currentPage} />
+
+	{#if !currentPage && needsConfig}
+		<div
+			class="absolute inset-0 z-10 flex items-center justify-center bg-ink/40 p-4 backdrop-blur-[3px]"
+		>
+			<div
+				class="max-w-sm rounded-2xl border border-parchment-4/60 bg-parchment px-6 py-8 text-center shadow-2xl shadow-ink/15"
+			>
+				<div class="mb-3 text-4xl">⚙</div>
+				<div
+					class="mb-2 font-serif text-xl text-ink"
+					style="font-family: 'Playfair Display', serif;"
+				>
+					Configure Your Council
+				</div>
+				<p class="mb-5 text-sm leading-relaxed text-ink-3">
+					Choose an AI provider and enter your API key to start convening the council.
+					Everything stays in your browser.
+				</p>
+				<button
+					class="cursor-pointer rounded-lg border border-gold bg-gold px-6 py-2.5 font-serif text-sm tracking-wide text-parchment transition-all duration-200 hover:border-ink-2 hover:bg-ink-2"
+					style="font-family: 'Playfair Display', serif;"
+					onclick={() => openPage('config')}
+				>
+					Set up configuration →
+				</button>
+			</div>
+		</div>
+	{/if}
 
 	<!-- Backdrop when subpage is open -->
 	<div
