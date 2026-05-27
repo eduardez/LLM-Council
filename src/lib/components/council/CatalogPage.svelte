@@ -69,6 +69,7 @@
 				<button
 					class="persona-card group relative cursor-pointer overflow-hidden rounded-[20px] border p-4 text-left transition-all duration-300"
 					class:selected={seated.includes(p.id)}
+					style="--spine: {p.spine};"
 					onclick={() => toggleSeat(p.id)}
 				>
 					<div class="flex h-full flex-col">
@@ -118,26 +119,23 @@
 <style>
 	.persona-card {
 		height: 150px;
-		border-color: rgba(112, 88, 64, 0.18);
+		border-color: color-mix(in srgb, var(--color-parchment-4) 80%, transparent);
 		background: transparent;
 		box-shadow: none;
-		color: #ddd0c0;
+		color: var(--color-ink-3);
 	}
 
 	.persona-card:hover {
 		transform: translateY(-3px);
-		border-color: rgba(180, 145, 90, 0.25);
-		background: rgba(255, 255, 255, 0.04);
-		box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.06);
+		border-color: color-mix(in srgb, var(--color-gold) 35%, transparent);
+		background: color-mix(in srgb, var(--color-parchment-2) 50%, transparent);
+		box-shadow: 0 4px 12px color-mix(in srgb, var(--color-ink) 8%, transparent);
 	}
 
 	.persona-card.selected {
-		border-color: rgba(180, 145, 90, 0.55);
-		background:
-			linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.15) 100%),
-			linear-gradient(180deg, #f7f1e8 0%, #f2eadf 100%);
-		box-shadow:
-			0px 4px 4px 4px rgba(180, 145, 90, 0.15);
+		border-color: color-mix(in srgb, var(--spine) 50%, transparent);
+		background: color-mix(in srgb, var(--spine) 12%, transparent);
+		box-shadow: 0 4px 16px color-mix(in srgb, var(--spine) 15%, transparent);
 		transform: translateY(-3px);
 	}
 
@@ -167,10 +165,8 @@
 	}
 
 	.persona-card.selected .persona-title {
-		color: #2d2218;
+		color: var(--color-ink);
 	}
-
-
 
 	.selected-only {
 		display: none;
@@ -184,7 +180,7 @@
 		content: '';
 		position: absolute;
 		inset: 0;
-		background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), transparent 34%);
+		background: linear-gradient(135deg, color-mix(in srgb, white 18%, transparent), transparent 34%);
 		pointer-events: none;
 		border-radius: inherit;
 	}
@@ -194,7 +190,7 @@
 		position: absolute;
 		inset: 1px;
 		border-radius: 19px;
-		border: 1px solid rgba(255, 255, 255, 0.32);
+		border: 1px solid color-mix(in srgb, white 20%, transparent);
 		pointer-events: none;
 	}
 
@@ -209,7 +205,7 @@
 	}
 
 	.persona-ribbon {
-		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+		box-shadow: inset 0 1px 0 color-mix(in srgb, white 35%, transparent);
 		transition:
 			width 0.3s ease,
 			height 0.3s ease;
@@ -223,12 +219,7 @@
 		margin-right: 0;
 	}
 
-
-
-
-
 	.persona-title {
 		letter-spacing: -0.02em;
 	}
-
 </style>

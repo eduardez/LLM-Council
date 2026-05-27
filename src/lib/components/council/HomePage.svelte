@@ -121,7 +121,7 @@
 </script>
 
 <div class="absolute inset-0 z-[1] flex flex-col overflow-y-auto bg-parchment pb-24">
-	<div class="flex-1 px-4 pt-7 pb-4 sm:px-7">
+	<div class="flex flex-1 flex-col px-4 pt-7 pb-4 sm:px-7">
 		<div
 			class="mb-1 text-center font-serif text-[28px] font-normal text-ink"
 			style="font-family: 'Playfair Display', serif;"
@@ -222,14 +222,13 @@
 		<div class="mb-2 text-[11px] font-medium tracking-[0.1em] text-ink-3 uppercase">
 			Your question
 		</div>
-		<div class="relative mb-2.5" class:focused={isFocused}>
+		<div class="relative mb-2.5 flex min-h-0 flex-1 flex-col" class:focused={isFocused}>
 			<span
 				class="pointer-events-none absolute top-2.5 right-2.5 text-base text-ink-3 transition-opacity duration-200"
 				class:opacity-30={isFocused}>✒</span
 			>
 			<textarea
-				rows="3"
-				class="min-h-[80px] w-full resize-none rounded-lg border border-parchment-3 bg-parchment-2 px-4 py-3 pr-9 text-sm leading-relaxed text-ink transition-all duration-200 outline-none placeholder:text-ink-3 placeholder:italic focus:border-gold-2 focus:bg-parchment"
+				class="min-h-[60px] flex-1 w-full resize-none rounded-lg border border-parchment-3 bg-parchment-2 px-4 py-3 pr-9 text-sm leading-relaxed text-ink transition-all duration-200 outline-none placeholder:text-ink-3 placeholder:italic focus:border-gold-2 focus:bg-parchment"
 				placeholder={prompts[promptIdx]}
 				bind:value={promptValue}
 				onfocus={() => {

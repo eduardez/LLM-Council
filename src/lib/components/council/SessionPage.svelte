@@ -279,7 +279,12 @@
 
 		requestAnimationFrame(() => {
 			if (scrollRef) {
-				scrollRef.scrollTop = scrollRef!.scrollHeight;
+				const threshold = 80;
+				const atBottom =
+					scrollRef.scrollHeight - scrollRef.scrollTop - scrollRef.clientHeight < threshold;
+				if (atBottom) {
+					scrollRef.scrollTop = scrollRef!.scrollHeight;
+				}
 			}
 		});
 	});
