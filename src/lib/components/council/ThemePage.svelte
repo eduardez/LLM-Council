@@ -12,8 +12,86 @@
 		{
 			id: 'parchment',
 			name: 'Parchment',
-			desc: 'Warm paper tones',
-			colors: ['#f5f0e8', '#ede8dc', '#e2dac8', '#a0845c']
+			desc: 'Black & white · red accent',
+			colors: ['#fcf8f6', '#f5f0ec', '#e8e0d8', '#c0392b']
+		},
+		{
+			id: 'mono-blue',
+			name: 'Mono Blue',
+			desc: 'Black & white · blue accent',
+			colors: ['#f8fafc', '#eef2f5', '#dce2e8', '#2980b9']
+		},
+		{
+			id: 'mono-green',
+			name: 'Mono Green',
+			desc: 'Black & white · green accent',
+			colors: ['#f8fcf8', '#eef5f0', '#dce8de', '#27ae60']
+		},
+		{
+			id: 'mono-purple',
+			name: 'Mono Purple',
+			desc: 'Black & white · purple accent',
+			colors: ['#faf8fc', '#f0eef5', '#e0dce8', '#8e44ad']
+		},
+		{
+			id: 'mono-orange',
+			name: 'Mono Orange',
+			desc: 'Black & white · orange accent',
+			colors: ['#fcf8f4', '#f5f0ea', '#e8e0d4', '#d35400']
+		},
+		{
+			id: 'mono-pink',
+			name: 'Mono Pink',
+			desc: 'Black & white · pink accent',
+			colors: ['#fcf6f8', '#f5ecf0', '#e8dce0', '#d43370']
+		},
+		{
+			id: 'mono-teal',
+			name: 'Mono Teal',
+			desc: 'Black & white · teal accent',
+			colors: ['#f6faf8', '#eaf5f0', '#d6e8e0', '#008080']
+		},
+		{
+			id: 'dark-red',
+			name: 'Dark Red',
+			desc: 'Black · red accent',
+			colors: ['#141010', '#1e1616', '#2a1e1e', '#e04838']
+		},
+		{
+			id: 'dark-blue',
+			name: 'Dark Blue',
+			desc: 'Black · blue accent',
+			colors: ['#101214', '#16181e', '#1e222a', '#3a9fd4']
+		},
+		{
+			id: 'dark-green',
+			name: 'Dark Green',
+			desc: 'Black · green accent',
+			colors: ['#101410', '#161e16', '#202a20', '#3cc87a']
+		},
+		{
+			id: 'dark-purple',
+			name: 'Dark Purple',
+			desc: 'Black · purple accent',
+			colors: ['#121014', '#1a1620', '#24202e', '#b066cc']
+		},
+		{
+			id: 'dark-orange',
+			name: 'Dark Orange',
+			desc: 'Black · orange accent',
+			colors: ['#14120e', '#1e1a14', '#2a241e', '#e88430']
+		},
+		{
+			id: 'dark-pink',
+			name: 'Dark Pink',
+			desc: 'Black · pink accent',
+			colors: ['#141012', '#1e1620', '#2a1e28', '#e85890']
+		},
+		{
+			id: 'dark-teal',
+			name: 'Dark Teal',
+			desc: 'Black · teal accent',
+			colors: ['#101412', '#161e1c', '#202a28', '#2aa0a0']
 		},
 		{
 			id: 'slate',
@@ -32,6 +110,12 @@
 			name: 'Moss',
 			desc: 'Earthy green undertones',
 			colors: ['#edf0e8', '#dce3d8', '#c8d2c0', '#5c845c']
+		},
+		{
+			id: 'mocha',
+			name: 'Mocha Mousse',
+			desc: 'Warm rich cocoa tones',
+			colors: ['#f4ede4', '#ebe0d3', '#ddd0c0', '#a0724a']
 		}
 	];
 

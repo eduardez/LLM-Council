@@ -112,14 +112,14 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
 	<link
-		href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap"
+		href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap"
 		rel="stylesheet"
 	/>
 </svelte:head>
 
 <div
-	class="council-shell relative flex w-full max-w-6xl flex-col overflow-hidden rounded-xl border border-parchment-4/60 bg-parchment text-ink shadow-2xl shadow-ink/10 sm:rounded-2xl md:rounded-[2rem]"
-	style="font-family: 'Lora', serif;"
+	class="council-shell relative flex w-full max-w-6xl flex-col overflow-hidden rounded-xl border border-parchment-4/60 bg-parchment text-ink shadow-2xl shadow-ink/10 sm:rounded-2xl md:rounded-[2rem] text-[15px] leading-relaxed"
+	style="font-family: var(--font-body);"
 >
 	<HomePage {personas} {seated} {reorderSeats} {openPage} {startSession} isVisible={!currentPage} />
 
@@ -172,6 +172,8 @@
 		background: var(--color-parchment-3);
 		padding: 1.5rem 1rem;
 		font-family: var(--font-body);
+		font-size: 15px;
+		line-height: 1.65;
 		color: var(--color-ink);
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;

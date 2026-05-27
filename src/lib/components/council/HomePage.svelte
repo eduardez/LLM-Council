@@ -137,13 +137,13 @@
 		<div
 			class="mb-2 flex items-center gap-2 text-[11px] font-medium tracking-[0.1em] text-ink-3 uppercase"
 		>
-			Council seats
+			Council
 			<span class="text-[10px] font-normal tracking-normal text-ink-3 normal-case italic">
 				drag to set speaking order
 			</span>
 		</div>
 		<div class="relative mb-[18px]">
-			<div class="flex min-h-[80px] flex-nowrap items-end gap-2 overflow-x-auto pb-1">
+			<div class="flex min-h-[80px] flex-nowrap items-end gap-2 overflow-x-auto pb-1 pt-5">
 				{#each slots as idx, pos (pos)}
 					{#if idx !== null}
 						{@const m = personas.find((p) => p.id === idx)}
