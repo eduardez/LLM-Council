@@ -190,7 +190,7 @@
 			</button>
 			<div
 				class="font-serif text-[21px] font-normal text-ink"
-				style="font-family: 'Playfair Display', serif;"
+				style="font-family: 'Cinzel Decorative', serif;"
 			>
 				Configuration
 			</div>
@@ -299,7 +299,7 @@
 		<div class="flex items-center">
 			<button
 				class="cursor-pointer rounded-md border border-gold bg-gold px-5 py-2 font-serif text-[13px] text-parchment transition-all duration-150 hover:border-ink-2 hover:bg-ink-2"
-				style="font-family: 'Playfair Display', serif;"
+				style="font-family: 'Cinzel Decorative', serif;"
 				onclick={saveConfig}
 			>
 				Save to browser

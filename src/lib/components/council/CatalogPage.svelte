@@ -51,7 +51,7 @@
 			<div class="flex items-center gap-2.5">
 				<div
 					class="font-serif text-[21px] font-normal text-ink"
-					style="font-family: 'Playfair Display', serif;"
+					style="font-family: 'Cinzel Decorative', serif;"
 				>
 					Persona catalogue
 				</div>
@@ -64,10 +64,10 @@
 			</div>
 		</div>
 
-		<div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+		<div class="flex flex-row flex-wrap h-full justify-evenly gap-5 align-middle">
 			{#each filteredPersonas as p (p.id)}
 				<button
-					class="persona-card group relative cursor-pointer overflow-hidden rounded-[20px] border p-4 text-left transition-all duration-300"
+					class="persona-card group  min-w-64 relative cursor-pointer overflow-hidden rounded-[20px] border p-4 text-left transition-all duration-300"
 					class:selected={seated.includes(p.id)}
 					style="--spine: {p.spine};"
 					onclick={() => toggleSeat(p.id)}
@@ -80,10 +80,10 @@
 							></div>
 
 							<div class="min-w-0">
-								<div class="flex items-center gap-2 name-row">
+								<div class="flex items-center gap-2 name-row min-w-0">
 									<div
 										class="persona-title truncate text-[22px] leading-tight font-semibold text-ink"
-										style="font-family: 'Playfair Display', serif;"
+										style="font-family: 'Cinzel Decorative', serif;"
 									>
 										{p.name}
 									</div>

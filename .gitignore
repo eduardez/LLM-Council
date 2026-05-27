@@ -27,3 +27,5 @@ project.inlang/cache/
 # SQLite
 *.db
 .opencode/opencode.json
+*.md
+!README.md

@@ -147,7 +147,7 @@
 			</button>
 			<div
 				class="font-serif text-[21px] font-normal text-ink"
-				style="font-family: 'Playfair Display', serif;"
+				style="font-family: 'Cinzel Decorative', serif;"
 			>
 				Theme
 			</div>

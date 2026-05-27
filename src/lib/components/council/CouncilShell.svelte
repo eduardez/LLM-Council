@@ -165,7 +165,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
 	<link
-		href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap"
+		href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Noto+Sans:wght@400;500;600;700&display=swap"
 		rel="stylesheet"
 	/>
 </svelte:head>
@@ -186,7 +186,7 @@
 				<div class="mb-3 text-4xl">⚙</div>
 				<div
 					class="mb-2 font-serif text-xl text-ink"
-					style="font-family: 'Playfair Display', serif;"
+					style="font-family: 'Cinzel Decorative', serif;"
 				>
 					Configure Your Council
 				</div>
@@ -196,7 +196,7 @@
 				</p>
 				<button
 					class="cursor-pointer rounded-lg border border-gold bg-gold px-6 py-2.5 font-serif text-sm tracking-wide text-parchment transition-all duration-200 hover:border-ink-2 hover:bg-ink-2"
-					style="font-family: 'Playfair Display', serif;"
+					style="font-family: 'Cinzel Decorative', serif;"
 					onclick={() => openPage('config')}
 				>
 					Set up configuration →

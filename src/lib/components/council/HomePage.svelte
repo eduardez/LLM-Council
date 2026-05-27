@@ -115,7 +115,7 @@
 	<div class="flex flex-1 flex-col px-4 pt-7 pb-4 sm:px-7">
 		<div
 			class="mb-1 text-center font-serif text-[28px] font-normal text-ink"
-			style="font-family: 'Playfair Display', serif;"
+			style="font-family: 'Cinzel Decorative', serif;"
 		>
 			The <em class="text-gold not-italic">Council</em>
 		</div>
@@ -159,7 +159,7 @@
 									{m.glyph}
 									<span
 										class="absolute -top-[6px] -right-[6px] flex h-[18px] w-[18px] items-center justify-center rounded-full bg-gold font-serif text-[10px] text-parchment"
-										style="font-family: 'Playfair Display', serif;"
+										style="font-family: 'Cinzel Decorative', serif;"
 									>
 										{pos + 1}
 									</span>
@@ -183,7 +183,7 @@
 								>
 									<div
 										class="mb-1 font-serif text-xs text-ink"
-										style="font-family: 'Playfair Display', serif;"
+										style="font-family: 'Cinzel Decorative', serif;"
 									>
 										{m.name}
 									</div>
@@ -258,8 +258,8 @@
 				</button>
 			</div>
 			<button
-				class="cursor-pointer rounded-lg border border-gold bg-gold px-[26px] py-2.5 font-serif text-sm tracking-wide text-parchment transition-all duration-200 hover:border-ink-2 hover:bg-ink-2"
-				style="font-family: 'Playfair Display', serif;"
+				class="cursor-pointer rounded-lg border border-gold bg-gold px-[26px] py-2.5 text-sm tracking-wide text-parchment transition-all duration-200 hover:border-ink-2 hover:bg-ink-2"
+				style="font-family: 'Cinzel Decorative', serif;"
 				onclick={handleConvene}
 			>
 				Convene the council →

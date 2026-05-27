@@ -120,7 +120,7 @@
 				<!-- Sign in -->
 				<button
 					class="flex cursor-pointer items-center gap-2 rounded-lg px-3 py-2 transition-colors duration-150 hover:bg-parchment-3"
-					onclick={() => showToast('Still not available')}
+					onclick={() => showToast('Sign-in is not available in this static build. Config is stored locally.')}
 				>
 					<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-sage/10 text-sage">
 						<IconKey size={16} stroke={1.5} />

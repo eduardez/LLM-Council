@@ -310,7 +310,7 @@
 					<IconArrowLeft size={16} stroke={1.5} />
 					<span>Council</span>
 				</button>
-				<div class="font-serif text-base text-ink" style="font-family: 'Playfair Display', serif;">
+				<div class="font-serif text-base text-ink" style="font-family: 'Cinzel Decorative', serif;">
 					Council in session
 				</div>
 			</div>
@@ -351,7 +351,7 @@
 							<div>
 								<div
 									class="font-serif text-[13px] font-medium text-ink"
-									style="font-family: 'Playfair Display', serif;"
+									style="font-family: 'Cinzel Decorative', serif;"
 								>
 									{persona.name}
 								</div>
@@ -384,7 +384,7 @@
 								</div>
 								<div
 									class="animate-[fadeRoman_0.4s_ease_forwards] font-serif text-xl tracking-[8px] text-gold-2"
-									style="font-family: 'Playfair Display', serif;"
+									style="font-family: 'Cinzel Decorative', serif;"
 								>
 									{romans[i] || ''}
 								</div>
@@ -407,7 +407,7 @@
 			<div class="mb-3 rounded-lg border border-parchment-3 bg-parchment p-[13px] text-center">
 				<div
 					class="font-serif text-[13px] text-ink-3 italic"
-					style="font-family: 'Playfair Display', serif;"
+					style="font-family: 'Cinzel Decorative', serif;"
 				>
 					Council deliberating…
 				</div>
@@ -419,7 +419,7 @@
 			<div class="rounded-lg border border-parchment-3 bg-parchment p-[13px]">
 				<div
 					class="mb-2.5 font-serif text-[13px] text-ink"
-					style="font-family: 'Playfair Display', serif;"
+					style="font-family: 'Cinzel Decorative', serif;"
 				>
 					The assembly has deliberated — peer rankings
 				</div>
@@ -438,7 +438,7 @@
 						</div>
 						<div
 							class="min-w-[32px] text-right font-serif text-xs text-gold"
-							style="font-family: 'Playfair Display', serif;"
+							style="font-family: 'Cinzel Decorative', serif;"
 						>
 							{vote.score}{i === 0 ? ' 👑' : ''}
 						</div>
@@ -459,7 +459,7 @@
 					<div>
 						<div
 							class="font-serif text-[13px] text-ink"
-							style="font-family: 'Playfair Display', serif;"
+							style="font-family: 'Cinzel Decorative', serif;"
 						>
 							The Council Scribe
 						</div>
