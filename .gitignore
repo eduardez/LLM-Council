@@ -29,3 +29,4 @@ project.inlang/cache/
 .opencode/opencode.json
 *.md
 !README.md
+!GUIDE.md

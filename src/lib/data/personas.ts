@@ -1,3 +1,5 @@
+// See GUIDE.md in this directory for the full reference on persona structure,
+// prompt anatomy, and writing methodology (Lens → Cognition → Voice → Conflict → Blind Spot).
 export interface Persona {
 	id: number;
 	glyph: string;
