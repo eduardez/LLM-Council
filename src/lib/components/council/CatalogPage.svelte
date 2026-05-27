@@ -40,7 +40,7 @@
 	style="transform: {isVisible ? 'translateY(0)' : 'translateY(100%)'};"
 >
 	<div class="flex-1 overflow-y-auto px-4 pt-[22px] pb-3.5 sm:px-[22px]">
-		<div class="mb-4 flex items-center justify-between">
+		<div class="mb-4 flex flex-wrap items-start justify-between gap-2">
 			<button
 				class="flex cursor-pointer items-center gap-1 rounded-md px-2 py-1 text-xs text-ink-3 transition-all duration-150 hover:bg-parchment-3 hover:text-ink"
 				onclick={closePage}
@@ -48,9 +48,9 @@
 				<IconArrowLeft size={16} stroke={1.5} />
 				<span>Council</span>
 			</button>
-			<div class="flex items-center gap-2.5">
+			<div class="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center sm:gap-2.5">
 				<div
-					class="font-serif text-[21px] font-normal text-ink"
+					class="font-serif text-lg font-normal text-ink sm:text-[21px]"
 					style="font-family: 'Cinzel Decorative', serif;"
 				>
 					Persona catalogue
@@ -58,16 +58,16 @@
 				<input
 					type="text"
 					placeholder="Search…"
-					class="w-[155px] rounded-md border border-parchment-3 bg-parchment-2 px-3 py-[7px] text-xs text-ink outline-none focus:border-gold-2"
+					class="w-full rounded-md border border-parchment-3 bg-parchment-2 px-3 py-[7px] text-xs text-ink outline-none focus:border-gold-2 sm:w-[155px]"
 					bind:value={searchQuery}
 				/>
 			</div>
 		</div>
 
-		<div class="flex flex-row flex-wrap h-full justify-evenly gap-5 align-middle">
+		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
 			{#each filteredPersonas as p (p.id)}
 				<button
-					class="persona-card group  min-w-64 relative cursor-pointer overflow-hidden rounded-[20px] border p-4 text-left transition-all duration-300"
+					class="persona-card group relative cursor-pointer overflow-hidden rounded-[20px] border p-4 text-left transition-all duration-300"
 					class:selected={seated.includes(p.id)}
 					style="--spine: {p.spine};"
 					onclick={() => toggleSeat(p.id)}
@@ -118,7 +118,7 @@
 
 <style>
 	.persona-card {
-		height: 150px;
+		min-height: 110px;
 		border-color: color-mix(in srgb, var(--color-parchment-4) 80%, transparent);
 		background: transparent;
 		box-shadow: none;

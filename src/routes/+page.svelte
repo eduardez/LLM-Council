@@ -36,24 +36,26 @@
 
 {#if showSplash}
 	<div
-		class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-parchment"
+		class="fixed inset-0 z-50 grid place-items-center bg-parchment px-4"
 		transition:fade={{ duration: 800 }}
 	>
-		<div
-			class="mb-6 text-5xl font-serif tracking-widest text-gold"
-			style="font-family: 'Cinzel Decorative', serif;"
-		>
-			✦ The Council
-		</div>
-		<div class="mb-6 h-px w-20 bg-gradient-to-r from-transparent via-gold/40 to-transparent"></div>
-		<div class="h-8 overflow-hidden">
-			{#key phraseIdx}
-				<span
-					class="block animate-pulse text-center text-lg italic text-ink/40"
-				>
-					{phrases[phraseIdx]}
-				</span>
-			{/key}
+		<div class="flex flex-col items-center">
+			<div
+				class="mb-4 text-center font-serif text-3xl tracking-widest text-gold sm:mb-6 sm:text-5xl"
+				style="font-family: 'Cinzel Decorative', serif;"
+			>
+				✦ The Council
+			</div>
+			<div class="mb-4 h-px w-16 bg-gradient-to-r from-transparent via-gold/40 to-transparent sm:mb-6 sm:w-20"></div>
+			<div class="h-8 overflow-hidden">
+				{#key phraseIdx}
+					<span
+						class="block animate-pulse text-center text-base italic text-ink/40 sm:text-lg"
+					>
+						{phrases[phraseIdx]}
+					</span>
+				{/key}
+			</div>
 		</div>
 	</div>
 {/if}

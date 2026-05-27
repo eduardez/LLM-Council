@@ -114,15 +114,15 @@
 <div class="absolute inset-0 z-[1] flex flex-col overflow-y-auto bg-parchment pb-24">
 	<div class="flex flex-1 flex-col px-4 pt-7 pb-4 sm:px-7">
 		<div
-			class="mb-1 text-center font-serif text-[28px] font-normal text-ink"
+			class="mb-1 text-center font-serif text-[22px] font-normal text-ink sm:text-[28px]"
 			style="font-family: 'Cinzel Decorative', serif;"
 		>
 			The <em class="text-gold not-italic">Council</em>
 		</div>
-		<div class="mb-4 text-center text-xs text-ink-3 italic">
+		<div class="mb-3 text-center text-[11px] text-ink-3 italic sm:mb-4 sm:text-xs">
 			A chamber of minds. One question. Many voices.
 		</div>
-		<div class="mb-[18px] text-center text-sm tracking-[6px] text-gold-2">· · ✦ · ·</div>
+		<div class="mb-[14px] text-center text-xs tracking-[4px] text-gold-2 sm:mb-[18px] sm:text-sm sm:tracking-[6px]">· · ✦ · ·</div>
 
 		<!-- Seats -->
 		<div
@@ -242,15 +242,15 @@
 			></textarea>
 		</div>
 
-		<div class="flex items-center justify-between">
-			<div class="flex items-center gap-3">
-				<span class="text-xs text-ink-3 italic">
+		<div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+			<div class="flex flex-wrap items-center gap-x-3 gap-y-1">
+				<span class="text-[11px] text-ink-3 italic sm:text-xs">
 					{seated.length} persona{seated.length !== 1 ? 's' : ''} seated{conflictedPositions.size
 						? ' · ⚡ conflicts detected'
 						: ''}
 				</span>
 				<button
-					class="flex cursor-pointer items-center gap-1 text-xs text-ink-3 transition-colors duration-150 hover:text-gold"
+					class="flex cursor-pointer items-center gap-1 text-[11px] text-ink-3 transition-colors duration-150 hover:text-gold sm:text-xs"
 					onclick={() => openPage('history')}
 				>
 					<IconHistory size={13} />
@@ -258,7 +258,7 @@
 				</button>
 			</div>
 			<button
-				class="cursor-pointer rounded-lg border border-gold bg-gold px-[26px] py-2.5 text-sm tracking-wide text-parchment transition-all duration-200 hover:border-ink-2 hover:bg-ink-2"
+				class="cursor-pointer rounded-lg border border-gold bg-gold px-5 py-2.5 text-sm tracking-wide text-parchment transition-all duration-200 hover:border-ink-2 hover:bg-ink-2 sm:px-[26px]"
 				style="font-family: 'Cinzel Decorative', serif;"
 				onclick={handleConvene}
 			>

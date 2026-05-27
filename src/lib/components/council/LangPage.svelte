@@ -28,7 +28,7 @@
 	style="transform: {isVisible ? 'translateY(0)' : 'translateY(100%)'};"
 >
 	<div class="flex-1 overflow-y-auto px-4 pt-[22px] pb-3.5 sm:px-[22px]">
-		<div class="mb-4 flex items-center justify-between">
+		<div class="mb-4 flex flex-wrap items-center justify-between gap-2">
 			<button
 				class="flex cursor-pointer items-center gap-1 rounded-md px-2 py-1 text-xs text-ink-3 transition-all duration-150 hover:bg-parchment-3 hover:text-ink"
 				onclick={closePage}
@@ -37,7 +37,7 @@
 				<span>Council</span>
 			</button>
 			<div
-				class="font-serif text-[21px] font-normal text-ink"
+				class="font-serif text-lg font-normal text-ink sm:text-[21px]"
 				style="font-family: 'Cinzel Decorative', serif;"
 			>
 				Language

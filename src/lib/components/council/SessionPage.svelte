@@ -302,7 +302,7 @@
 >
 	<div bind:this={scrollRef} class="flex-1 overflow-y-auto px-4 pt-5 pb-4 sm:px-[22px]">
 		<div class="mb-4 border-b border-parchment-3 pb-3">
-			<div class="flex items-center justify-between">
+			<div class="flex items-center justify-between gap-2">
 				<button
 					class="flex cursor-pointer items-center gap-1 rounded-md px-2 py-1 text-xs text-ink-3 transition-all duration-150 hover:bg-parchment-3 hover:text-ink"
 					onclick={closePage}
@@ -310,7 +310,7 @@
 					<IconArrowLeft size={16} stroke={1.5} />
 					<span>Council</span>
 				</button>
-				<div class="font-serif text-base text-ink" style="font-family: 'Cinzel Decorative', serif;">
+				<div class="truncate font-serif text-sm text-ink sm:text-base" style="font-family: 'Cinzel Decorative', serif;">
 					Council in session
 				</div>
 			</div>
@@ -424,9 +424,9 @@
 					The assembly has deliberated — peer rankings
 				</div>
 				{#each voteData as vote, i (i)}
-					<div class="relative mb-[9px] flex items-center gap-2.5">
+					<div class="relative mb-[9px] flex items-center gap-1.5 sm:gap-2.5">
 						<div
-							class="w-[88px] overflow-hidden text-xs text-ellipsis whitespace-nowrap text-ink-2"
+							class="w-16 overflow-hidden text-[11px] text-ellipsis whitespace-nowrap text-ink-2 sm:w-[88px] sm:text-xs"
 						>
 							{vote.name}
 						</div>
@@ -437,7 +437,7 @@
 							></div>
 						</div>
 						<div
-							class="min-w-[32px] text-right font-serif text-xs text-gold"
+							class="min-w-[24px] text-right font-serif text-[11px] text-gold sm:min-w-[32px] sm:text-xs"
 							style="font-family: 'Cinzel Decorative', serif;"
 						>
 							{vote.score}{i === 0 ? ' 👑' : ''}

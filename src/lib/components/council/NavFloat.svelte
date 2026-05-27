@@ -28,7 +28,7 @@
 
 <div class="absolute inset-x-0 bottom-0 z-10" class:pointer-events-none={currentPage}>
 	<!-- Panel clipped at its own height — bottom corners match the shell -->
-	<div class="overflow-hidden rounded-b-xl sm:rounded-b-2xl md:rounded-b-[2rem]">
+	<div class="overflow-hidden md:rounded-b-[2rem]">
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
 		<div
 			class="w-full transition-transform duration-[400ms] ease-[cubic-bezier(0.32,0.72,0,1)]"
@@ -56,22 +56,22 @@
 			</button>
 
 			<div
-				class="flex w-full items-center justify-center gap-2 border-t border-parchment-4 bg-parchment-2/50 px-3 py-2 sm:gap-4"
+				class="flex w-full items-center justify-center gap-1 border-t border-parchment-4 bg-parchment-2/50 px-1 py-2 sm:gap-4 sm:px-3"
 			>
 				<!-- Members -->
 				<button
-					class="flex cursor-pointer items-center gap-2 rounded-lg px-3 py-2 transition-colors duration-150 hover:bg-parchment-3"
+					class="nav-btn flex cursor-pointer flex-col items-center gap-1 rounded-lg px-2 py-2 transition-colors duration-150 hover:bg-parchment-3 sm:flex-row sm:gap-2 sm:px-3"
 					onclick={() => openPage('catalog')}
 				>
 					<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-gold-3 text-gold">
 						<IconMasksTheater size={16} stroke={1.5} />
 					</div>
-					<span class="text-[11px] font-medium text-ink">Members</span>
+					<span class="nav-label text-[10px] font-medium text-ink sm:text-[11px]">Members</span>
 				</button>
 
 				<!-- Config -->
 				<button
-					class="flex cursor-pointer items-center gap-2 rounded-lg px-3 py-2 transition-colors duration-150 hover:bg-parchment-3"
+					class="nav-btn flex cursor-pointer flex-col items-center gap-1 rounded-lg px-2 py-2 transition-colors duration-150 hover:bg-parchment-3 sm:flex-row sm:gap-2 sm:px-3"
 					onclick={() => openPage('config')}
 				>
 					<div
@@ -79,12 +79,12 @@
 					>
 						<IconSettings size={16} stroke={1.5} />
 					</div>
-					<span class="text-[11px] font-medium text-ink">Config</span>
+					<span class="nav-label text-[10px] font-medium text-ink sm:text-[11px]">Config</span>
 				</button>
 
 				<!-- Language -->
 				<button
-					class="flex cursor-pointer items-center gap-2 rounded-lg px-3 py-2 transition-colors duration-150 hover:bg-parchment-3"
+					class="nav-btn flex cursor-pointer flex-col items-center gap-1 rounded-lg px-2 py-2 transition-colors duration-150 hover:bg-parchment-3 sm:flex-row sm:gap-2 sm:px-3"
 					onclick={() => openPage('lang')}
 				>
 					<div
@@ -92,40 +92,40 @@
 					>
 						<IconLanguage size={16} stroke={1.5} />
 					</div>
-					<span class="text-[11px] font-medium text-ink">Language</span>
+					<span class="nav-label text-[10px] font-medium text-ink sm:text-[11px]">Lang</span>
 				</button>
 
 				<!-- Theme -->
 				<button
-					class="flex cursor-pointer items-center gap-2 rounded-lg px-3 py-2 transition-colors duration-150 hover:bg-parchment-3"
+					class="nav-btn flex cursor-pointer flex-col items-center gap-1 rounded-lg px-2 py-2 transition-colors duration-150 hover:bg-parchment-3 sm:flex-row sm:gap-2 sm:px-3"
 					onclick={() => openPage('theme')}
 				>
 					<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-gold-3 text-gold">
 						<IconSun size={16} stroke={1.5} />
 					</div>
-					<span class="text-[11px] font-medium text-ink">Theme</span>
+					<span class="nav-label text-[10px] font-medium text-ink sm:text-[11px]">Theme</span>
 				</button>
 
 				<!-- History -->
 				<button
-					class="flex cursor-pointer items-center gap-2 rounded-lg px-3 py-2 transition-colors duration-150 hover:bg-parchment-3"
+					class="nav-btn flex cursor-pointer flex-col items-center gap-1 rounded-lg px-2 py-2 transition-colors duration-150 hover:bg-parchment-3 sm:flex-row sm:gap-2 sm:px-3"
 					onclick={() => openPage('history')}
 				>
 					<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-gold-3 text-gold">
 						<IconHistory size={16} stroke={1.5} />
 					</div>
-					<span class="text-[11px] font-medium text-ink">History</span>
+					<span class="nav-label text-[10px] font-medium text-ink sm:text-[11px]">History</span>
 				</button>
 
 				<!-- Sign in -->
 				<button
-					class="flex cursor-pointer items-center gap-2 rounded-lg px-3 py-2 transition-colors duration-150 hover:bg-parchment-3"
+					class="nav-btn flex cursor-pointer flex-col items-center gap-1 rounded-lg px-2 py-2 transition-colors duration-150 hover:bg-parchment-3 sm:flex-row sm:gap-2 sm:px-3"
 					onclick={() => showToast('Sign-in is not available in this static build. Config is stored locally.')}
 				>
 					<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-sage/10 text-sage">
 						<IconKey size={16} stroke={1.5} />
 					</div>
-					<span class="text-[11px] font-medium text-ink">Sign in</span>
+					<span class="nav-label text-[10px] font-medium text-ink sm:text-[11px]">Sign in</span>
 				</button>
 			</div>
 		</div>
@@ -139,3 +139,18 @@
 		</div>
 	{/if}
 </div>
+
+<style>
+	@media (max-width: 419px) {
+		.nav-btn {
+			padding-left: 0.375rem !important;
+			padding-right: 0.375rem !important;
+		}
+	}
+
+	@media (max-width: 379px) {
+		.nav-label {
+			display: none;
+		}
+	}
+</style>

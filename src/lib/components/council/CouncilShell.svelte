@@ -171,7 +171,7 @@
 </svelte:head>
 
 <div
-	class="council-shell relative flex w-full max-w-6xl flex-col overflow-hidden rounded-xl border border-parchment-4/60 bg-parchment text-ink shadow-2xl shadow-ink/10 sm:rounded-2xl md:rounded-[2rem] text-[15px] leading-relaxed"
+	class="council-shell relative flex w-full max-w-6xl flex-col overflow-hidden bg-parchment text-ink text-[15px] leading-relaxed md:shadow-2xl md:shadow-ink/10"
 	style="font-family: var(--font-body);"
 >
 	<HomePage {personas} {seated} {reorderSeats} {openPage} {startSession} isVisible={!currentPage} />
@@ -252,19 +252,13 @@
 		min-height: 100svh;
 		justify-content: center;
 		background: var(--color-parchment-3);
-		padding: 1.5rem 1rem;
+		padding: 0;
 		font-family: var(--font-body);
 		font-size: 15px;
 		line-height: 1.65;
 		color: var(--color-ink);
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
-	}
-
-	@media (min-width: 640px) {
-		:global(body) {
-			padding: 1.5rem;
-		}
 	}
 
 	@media (min-width: 768px) {
@@ -276,12 +270,16 @@
 	}
 
 	.council-shell {
-		height: calc(100dvh - 3rem);
+		height: 100dvh;
+		border-radius: 0;
+		border: none;
 	}
 
 	@media (min-width: 768px) {
 		.council-shell {
 			height: calc(100dvh - 6rem);
+			border-radius: 2rem;
+			border: 1px solid color-mix(in srgb, var(--color-parchment-4) 60%, transparent);
 		}
 	}
 </style>
