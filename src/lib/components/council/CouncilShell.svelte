@@ -171,7 +171,7 @@
 </svelte:head>
 
 <div
-	class="council-shell relative flex w-full max-w-6xl flex-col overflow-hidden bg-parchment text-ink text-[15px] leading-relaxed md:shadow-2xl md:shadow-ink/10"
+	class="council-shell relative flex w-full max-w-6xl flex-col overflow-hidden bg-parchment text-ink text-[15px] leading-relaxed"
 	style="font-family: var(--font-body);"
 >
 	<HomePage {personas} {seated} {reorderSeats} {openPage} {startSession} isVisible={!currentPage} />
@@ -251,7 +251,7 @@
 		display: flex;
 		min-height: 100svh;
 		justify-content: center;
-		background: var(--color-parchment-3);
+		background: color-mix(in srgb, var(--color-parchment), black 14%);
 		padding: 0;
 		font-family: var(--font-body);
 		font-size: 15px;
@@ -280,6 +280,7 @@
 			height: calc(100dvh - 6rem);
 			border-radius: 2rem;
 			border: 1px solid color-mix(in srgb, var(--color-parchment-4) 60%, transparent);
+			box-shadow: 0 25px 50px -8px rgba(0, 0, 0, 0.12);
 		}
 	}
 </style>

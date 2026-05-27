@@ -40,7 +40,7 @@
 	style="transform: {isVisible ? 'translateY(0)' : 'translateY(100%)'};"
 >
 	<div class="flex-1 overflow-y-auto px-4 pt-[22px] pb-3.5 sm:px-[22px]">
-		<div class="mb-4 flex flex-wrap items-start justify-between gap-2">
+		<div class="mb-5 flex flex-wrap items-start justify-between gap-2">
 			<button
 				class="flex cursor-pointer items-center gap-1 rounded-md px-2 py-1 text-xs text-ink-3 transition-all duration-150 hover:bg-parchment-3 hover:text-ink"
 				onclick={closePage}
@@ -48,7 +48,7 @@
 				<IconArrowLeft size={16} stroke={1.5} />
 				<span>Council</span>
 			</button>
-			<div class="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center sm:gap-2.5">
+			<div class="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center sm:gap-3">
 				<div
 					class="font-serif text-lg font-normal text-ink sm:text-[21px]"
 					style="font-family: 'Cinzel Decorative', serif;"
@@ -58,7 +58,7 @@
 				<input
 					type="text"
 					placeholder="Search…"
-					class="w-full rounded-md border border-parchment-3 bg-parchment-2 px-3 py-[7px] text-xs text-ink outline-none focus:border-gold-2 sm:w-[155px]"
+					class="w-full rounded-md border border-parchment-3 bg-parchment-2 px-3 py-[7px] text-xs text-ink outline-none transition-colors duration-150 placeholder:text-ink-3 focus:border-gold-2 sm:w-[155px]"
 					bind:value={searchQuery}
 				/>
 			</div>
@@ -67,40 +67,48 @@
 		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
 			{#each filteredPersonas as p (p.id)}
 				<button
-					class="persona-card group relative cursor-pointer overflow-hidden rounded-[20px] border p-4 text-left transition-all duration-300"
+					class="catalog-card group relative cursor-pointer overflow-hidden rounded-[20px] border p-4 text-left transition-all duration-300"
 					class:selected={seated.includes(p.id)}
-					style="--spine: {p.spine};"
+					style="--spine: {p.spine}; --tag-bg: {p.tagBg}; --tag-color: {p.tagColor};"
 					onclick={() => toggleSeat(p.id)}
 				>
 					<div class="flex h-full flex-col">
-						<div class="flex flex-1 items-center align-middle m-auto">
+						<div class="flex flex-1 items-center gap-3">
 							<div
-								class="persona-ribbon h-12 w-1 flex-shrink-0 rounded-full mr-2"
+								class="catalog-ribbon h-12 w-1 flex-shrink-0 rounded-full"
 								style="background: {p.spine};"
 							></div>
 
-							<div class="min-w-0">
-								<div class="flex items-center gap-2 name-row min-w-0">
+							<div class="min-w-0 flex-1">
+								<div class="catalog-name-row flex items-center gap-2 min-w-0">
 									<div
-										class="persona-title truncate text-[22px] leading-tight font-semibold text-ink"
-										style="font-family: 'Cinzel Decorative', serif;"
+										class="catalog-title truncate text-[22px] leading-tight font-semibold text-ink"
+										style="font-family: 'Cinzel Decorative', serif; letter-spacing: -0.02em;"
 									>
 										{p.name}
 									</div>
-									<span class="selected-only flex-shrink-0 text-xl">{p.glyph}</span>
+									<span class="catalog-glyph-selected flex-shrink-0 text-xl">{p.glyph}</span>
 								</div>
 							</div>
 						</div>
 
-						<div class="selected-collapse pb-1 text-[12px] leading-relaxed text-ink-3">
-							{p.role}
+						<div class="catalog-details mt-2 flex items-center gap-2">
+							<span
+								class="rounded-md px-2 py-0.5 text-[10px] font-medium tracking-wide uppercase"
+								style="background: var(--tag-bg); color: var(--tag-color);"
+							>
+								{p.tag}
+							</span>
+							<span class="text-[12px] leading-relaxed text-ink-3 line-clamp-1">
+								{p.role}
+							</span>
 						</div>
 					</div>
 				</button>
 			{/each}
 		</div>
 
-		<div class="mt-3.5 flex items-center justify-between">
+		<div class="mt-4 flex items-center justify-between">
 			<span class="text-xs text-ink-3 italic">{seated.length} of 12 seats filled</span>
 		</div>
 	</div>
@@ -117,36 +125,67 @@
 </div>
 
 <style>
-	.persona-card {
-		min-height: 110px;
+	.catalog-card {
+		height: 130px;
 		border-color: color-mix(in srgb, var(--color-parchment-4) 80%, transparent);
 		background: transparent;
 		box-shadow: none;
 		color: var(--color-ink-3);
+		overflow: hidden;
 	}
 
-	.persona-card:hover {
+	.catalog-card:hover {
 		transform: translateY(-3px);
-		border-color: color-mix(in srgb, var(--color-gold) 35%, transparent);
+		border-color: color-mix(in srgb, var(--spine) 35%, transparent);
 		background: color-mix(in srgb, var(--color-parchment-2) 50%, transparent);
 		box-shadow: 0 4px 12px color-mix(in srgb, var(--color-ink) 8%, transparent);
 	}
 
-	.persona-card.selected {
+	.catalog-card.selected {
 		border-color: color-mix(in srgb, var(--spine) 50%, transparent);
-		background: color-mix(in srgb, var(--spine) 12%, transparent);
+		background: color-mix(in srgb, var(--spine) 10%, transparent);
 		box-shadow: 0 4px 16px color-mix(in srgb, var(--spine) 15%, transparent);
 		transform: translateY(-3px);
 	}
 
-	.persona-card.selected .selected-collapse {
+	/* Ribbon: normal transition, but INSTANTLY disappears on select */
+	.catalog-ribbon {
+		transition: all 0.3s ease;
+		box-shadow: inset 0 1px 0 color-mix(in srgb, white 35%, transparent);
+	}
+	.catalog-card.selected .catalog-ribbon {
+		transition: none;
+		width: 0;
+		height: 0;
+		opacity: 0;
+		margin-right: 0;
+	}
+
+	/* Details row fades & collapses within fixed height */
+	.catalog-details {
+		transition:
+			opacity 0.3s ease,
+			max-height 0.3s ease,
+			margin-top 0.3s ease,
+			padding 0.3s ease;
+		max-height: 50px;
+		overflow: hidden;
+	}
+	.catalog-card.selected .catalog-details {
 		opacity: 0;
 		max-height: 0;
+		margin-top: 0;
+		padding-top: 0;
+		padding-bottom: 0;
 		overflow: hidden;
 		pointer-events: none;
 	}
 
-	.persona-card.selected .name-row {
+	/* Name row: smooth layout shift within fixed height */
+	.catalog-name-row {
+		transition: all 0.3s ease;
+	}
+	.catalog-card.selected .catalog-name-row {
 		flex-direction: column;
 		align-items: center;
 		text-align: center;
@@ -154,29 +193,31 @@
 		width: 100%;
 	}
 
-	.persona-card.selected .min-w-0 {
+	.catalog-card.selected .flex-1 {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 	}
 
-	.persona-card.selected .flex.h-full {
+	.catalog-card.selected .flex.h-full {
 		justify-content: center;
 	}
 
-	.persona-card.selected .persona-title {
+	.catalog-card.selected .catalog-title {
 		color: var(--color-ink);
 	}
 
-	.selected-only {
+	/* Glyph hidden by default, appears on select */
+	.catalog-glyph-selected {
 		display: none;
 	}
 
-	.persona-card.selected .selected-only {
+	.catalog-card.selected .catalog-glyph-selected {
 		display: inline;
 	}
 
-	.persona-card::before {
+	/* Shine overlay */
+	.catalog-card::before {
 		content: '';
 		position: absolute;
 		inset: 0;
@@ -185,41 +226,12 @@
 		border-radius: inherit;
 	}
 
-	.persona-card::after {
+	.catalog-card::after {
 		content: '';
 		position: absolute;
 		inset: 1px;
 		border-radius: 19px;
 		border: 1px solid color-mix(in srgb, white 20%, transparent);
 		pointer-events: none;
-	}
-
-	.selected-collapse {
-		transition:
-			opacity 0.3s ease,
-			max-height 0.3s ease,
-			margin 0.3s ease,
-			padding 0.3s ease;
-		max-height: 200px;
-		overflow: hidden;
-	}
-
-	.persona-ribbon {
-		box-shadow: inset 0 1px 0 color-mix(in srgb, white 35%, transparent);
-		transition:
-			width 0.3s ease,
-			height 0.3s ease;
-	}
-
-	.persona-card.selected .persona-ribbon {
-		width: 0;
-		height: 0;
-		opacity: 0;
-		gap: 0;
-		margin-right: 0;
-	}
-
-	.persona-title {
-		letter-spacing: -0.02em;
 	}
 </style>

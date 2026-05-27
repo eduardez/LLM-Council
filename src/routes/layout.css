@@ -28,15 +28,15 @@
 /* Slate — cool professional blue-grey */
 .theme-slate {
 	--color-parchment: #eef2f2;
-	--color-parchment-2: #e4e8ea;
-	--color-parchment-3: #d4d9dc;
-	--color-parchment-4: #b8c0c4;
+	--color-parchment-2: #e0e6e8;
+	--color-parchment-3: #ccd4d8;
+	--color-parchment-4: #b0bcc4;
 	--color-ink: #1e262e;
 	--color-ink-2: #45525e;
 	--color-ink-3: #6c7a86;
 	--color-gold: #5c84a0;
 	--color-gold-2: #7aa4c0;
-	--color-gold-3: #d4e4f0;
+	--color-gold-3: #deeaf2;
 	--color-burgundy: #4a3d5c;
 	--color-sage: #3d5a6b;
 	--color-seal: #5c3a4a;
@@ -44,19 +44,19 @@
 
 /* Midnight — dark mode with gold accents */
 .theme-midnight {
-	--color-parchment: #1a1a24;
-	--color-parchment-2: #22222e;
-	--color-parchment-3: #2e2e3e;
-	--color-parchment-4: #3e3e50;
-	--color-ink: #e8e4dc;
-	--color-ink-2: #b8b4ac;
-	--color-ink-3: #888480;
-	--color-gold: #a0845c;
-	--color-gold-2: #c4a97a;
-	--color-gold-3: #3a3020;
-	--color-burgundy: #8b4a4a;
-	--color-sage: #5a7a5a;
-	--color-seal: #6b3a3a;
+	--color-parchment: #302c28;
+	--color-parchment-2: #3a3632;
+	--color-parchment-3: #48443e;
+	--color-parchment-4: #5a5650;
+	--color-ink: #e8e2da;
+	--color-ink-2: #b8b2aa;
+	--color-ink-3: #8a847c;
+	--color-gold: #c8b08a;
+	--color-gold-2: #d8c4a4;
+	--color-gold-3: #2e2822;
+	--color-burgundy: #8b5a4a;
+	--color-sage: #6a7a5a;
+	--color-seal: #6b4a3a;
 }
 
 /* Moss — natural forest green */
@@ -70,7 +70,7 @@
 	--color-ink-3: #708468;
 	--color-gold: #5c845c;
 	--color-gold-2: #7aa47a;
-	--color-gold-3: #d4e0d0;
+	--color-gold-3: #d8e4d4;
 	--color-burgundy: #5c4a3a;
 	--color-sage: #3d6b4a;
 	--color-seal: #4a5c3a;
@@ -112,184 +112,59 @@
 	--color-seal: #208a4a;
 }
 
-.theme-mono-purple {
-	--color-parchment: #faf8fc;
-	--color-parchment-2: #f0eef5;
-	--color-parchment-3: #e0dce8;
-	--color-parchment-4: #c4bcd0;
-	--color-ink: #14121a;
-	--color-ink-2: #423e4e;
-	--color-ink-3: #726e7e;
-	--color-gold: #8e44ad;
-	--color-gold-2: #b066cc;
-	--color-gold-3: #f0e4f8;
-	--color-burgundy: #5b2d6b;
-	--color-sage: #5a4a7a;
-	--color-seal: #703a8a;
-}
 
-.theme-mono-orange {
-	--color-parchment: #fcf8f4;
-	--color-parchment-2: #f5f0ea;
-	--color-parchment-3: #e8e0d4;
-	--color-parchment-4: #ccc0b0;
-	--color-ink: #1a1410;
-	--color-ink-2: #4a3e34;
-	--color-ink-3: #7a6e62;
-	--color-gold: #d35400;
-	--color-gold-2: #e87420;
-	--color-gold-3: #fcece0;
-	--color-burgundy: #8a3a00;
-	--color-sage: #6a7a5a;
-	--color-seal: #a84a10;
-}
-
-.theme-mono-pink {
-	--color-parchment: #fcf6f8;
-	--color-parchment-2: #f5ecf0;
-	--color-parchment-3: #e8dce0;
-	--color-parchment-4: #ccbcc4;
-	--color-ink: #1a1216;
-	--color-ink-2: #4e3e44;
-	--color-ink-3: #7e6e74;
-	--color-gold: #d43370;
-	--color-gold-2: #e85890;
-	--color-gold-3: #fce8f0;
-	--color-burgundy: #8a1a4a;
-	--color-sage: #7a5a6a;
-	--color-seal: #a82860;
-}
-
-.theme-mono-teal {
-	--color-parchment: #f6faf8;
-	--color-parchment-2: #eaf5f0;
-	--color-parchment-3: #d6e8e0;
-	--color-parchment-4: #b8d0c4;
-	--color-ink: #121a18;
-	--color-ink-2: #3e4e48;
-	--color-ink-3: #6e7e76;
-	--color-gold: #008080;
-	--color-gold-2: #2aa0a0;
-	--color-gold-3: #e0f0f0;
-	--color-burgundy: #005050;
-	--color-sage: #4a7a6a;
-	--color-seal: #006666;
-}
 
 /* ─────────────────────────────────────────────
    DARK MONOCHROME VARIATIONS
 ───────────────────────────────────────────── */
 
-.theme-dark-red {
-	--color-parchment: #141010;
-	--color-parchment-2: #1e1616;
-	--color-parchment-3: #2a1e1e;
-	--color-parchment-4: #382a2a;
-	--color-ink: #f0ece8;
-	--color-ink-2: #bbb4b0;
-	--color-ink-3: #888480;
-	--color-gold: #e04838;
-	--color-gold-2: #c0392b;
-	--color-gold-3: #2a1a18;
-	--color-burgundy: #cc2222;
-	--color-sage: #5a6a5a;
-	--color-seal: #aa3333;
-}
-
 .theme-dark-blue {
-	--color-parchment: #101214;
-	--color-parchment-2: #16181e;
-	--color-parchment-3: #1e222a;
-	--color-parchment-4: #2a2e38;
-	--color-ink: #e8ecf0;
-	--color-ink-2: #b0b4bb;
-	--color-ink-3: #808488;
-	--color-gold: #3a9fd4;
-	--color-gold-2: #2980b9;
-	--color-gold-3: #182a34;
-	--color-burgundy: #2266aa;
+	--color-parchment: #24282c;
+	--color-parchment-2: #2e3238;
+	--color-parchment-3: #3a3e44;
+	--color-parchment-4: #4c5056;
+	--color-ink: #e0e4e8;
+	--color-ink-2: #b0b4ba;
+	--color-ink-3: #82868c;
+	--color-gold: #5aa8d0;
+	--color-gold-2: #76bada;
+	--color-gold-3: #1e2e38;
+	--color-burgundy: #3a6a9a;
 	--color-sage: #4a6a7a;
-	--color-seal: #2066aa;
+	--color-seal: #2a6a9a;
 }
 
 .theme-dark-green {
-	--color-parchment: #101410;
-	--color-parchment-2: #161e16;
-	--color-parchment-3: #202a20;
-	--color-parchment-4: #2a382a;
-	--color-ink: #e8f0ea;
-	--color-ink-2: #b0bbb2;
-	--color-ink-3: #808882;
-	--color-gold: #3cc87a;
-	--color-gold-2: #27ae60;
-	--color-gold-3: #182a1e;
-	--color-burgundy: #22aa44;
+	--color-parchment: #242824;
+	--color-parchment-2: #2e322e;
+	--color-parchment-3: #3c403c;
+	--color-parchment-4: #4e524c;
+	--color-ink: #e0e8e2;
+	--color-ink-2: #b0b8b2;
+	--color-ink-3: #828a84;
+	--color-gold: #4abc7a;
+	--color-gold-2: #6aca94;
+	--color-gold-3: #1e2e24;
+	--color-burgundy: #389a4a;
 	--color-sage: #4a7a5a;
-	--color-seal: #208a4a;
+	--color-seal: #2a8a4a;
 }
 
-.theme-dark-purple {
-	--color-parchment: #121014;
-	--color-parchment-2: #1a1620;
-	--color-parchment-3: #24202e;
-	--color-parchment-4: #302a3c;
-	--color-ink: #ece8f0;
-	--color-ink-2: #b8b0c0;
-	--color-ink-3: #888090;
-	--color-gold: #b066cc;
-	--color-gold-2: #8e44ad;
-	--color-gold-3: #22182a;
-	--color-burgundy: #8844cc;
-	--color-sage: #5a4a7a;
-	--color-seal: #703aaa;
-}
-
-.theme-dark-orange {
-	--color-parchment: #14120e;
-	--color-parchment-2: #1e1a14;
-	--color-parchment-3: #2a241e;
-	--color-parchment-4: #383028;
-	--color-ink: #f0ece6;
-	--color-ink-2: #bbb4ac;
-	--color-ink-3: #88847a;
-	--color-gold: #e88430;
-	--color-gold-2: #d35400;
-	--color-gold-3: #2a1a0e;
-	--color-burgundy: #cc6600;
+/* Mocha Mousse — warm rich cocoa */
+.theme-mocha {
+	--color-parchment: #f4ede4;
+	--color-parchment-2: #ebe0d3;
+	--color-parchment-3: #ddd0c0;
+	--color-parchment-4: #c8b8a4;
+	--color-ink: #2a2018;
+	--color-ink-2: #5a4a3a;
+	--color-ink-3: #8a7a68;
+	--color-gold: #a0724a;
+	--color-gold-2: #b8885e;
+	--color-gold-3: #efe4d8;
+	--color-burgundy: #6a3a2a;
 	--color-sage: #6a7a5a;
-	--color-seal: #aa5510;
-}
-
-.theme-dark-pink {
-	--color-parchment: #141012;
-	--color-parchment-2: #1e1620;
-	--color-parchment-3: #2a1e28;
-	--color-parchment-4: #382a34;
-	--color-ink: #f0e8ec;
-	--color-ink-2: #bbb0b8;
-	--color-ink-3: #888088;
-	--color-gold: #e85890;
-	--color-gold-2: #d43370;
-	--color-gold-3: #2a1820;
-	--color-burgundy: #cc3377;
-	--color-sage: #7a5a6a;
-	--color-seal: #aa2860;
-}
-
-.theme-dark-teal {
-	--color-parchment: #101412;
-	--color-parchment-2: #161e1c;
-	--color-parchment-3: #202a28;
-	--color-parchment-4: #2a3834;
-	--color-ink: #e8f0ee;
-	--color-ink-2: #b0bbb8;
-	--color-ink-3: #808886;
-	--color-gold: #2aa0a0;
-	--color-gold-2: #008080;
-	--color-gold-3: #182a2a;
-	--color-burgundy: #00a0a0;
-	--color-sage: #4a7a6a;
-	--color-seal: #006688;
+	--color-seal: #8a5040;
 }
 
 /* ─────────────────────────────────────────────
