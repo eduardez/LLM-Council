@@ -8,22 +8,9 @@
 	import ThemePage from './ThemePage.svelte';
 	import HistoryPage from './HistoryPage.svelte';
 	import NavFloat from './NavFloat.svelte';
+	import { personas as personaData } from '$lib/data/personas';
 
-	interface Persona {
-		id: number;
-		glyph: string;
-		name: string;
-		role: string;
-		tag: string;
-		tagBg: string;
-		tagColor: string;
-		spine: string;
-		quote: string;
-		conflicts: string;
-		prompt: string;
-	}
-
-	let personas = $state<Persona[]>([]);
+	let personas = $state(personaData);
 	let seated = $state<number[]>([0, 1, 2]);
 	let currentPage = $state<string | null>(null);
 	let menuOpen = $state(false);
@@ -39,16 +26,7 @@
 		synthesis: string;
 	} | null>(null);
 
-	onMount(async () => {
-		try {
-			const res = await fetch('/api/personas');
-			if (res.ok) {
-				personas = await res.json();
-			}
-		} catch (error) {
-			console.error('Failed to load personas:', error);
-		}
-
+	onMount(() => {
 		const savedTheme = localStorage.getItem('council_theme');
 		if (savedTheme && savedTheme !== 'parchment') {
 			document.documentElement.className = `theme-${savedTheme}`;
