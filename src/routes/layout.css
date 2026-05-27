@@ -1,3 +1,101 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
+
+@theme {
+	--color-parchment: #f5f0e8;
+	--color-parchment-2: #ede8dc;
+	--color-parchment-3: #e2dac8;
+	--color-parchment-4: #cfc9b8;
+	--color-ink: #2c2416;
+	--color-ink-2: #5c4f38;
+	--color-ink-3: #8c7b60;
+	--color-gold: #a0845c;
+	--color-gold-2: #c4a97a;
+	--color-gold-3: #f0e4c4;
+	--color-burgundy: #6b2d2d;
+	--color-sage: #3d5a44;
+	--color-seal: #8b3a3a;
+	--font-serif: 'Playfair Display', serif;
+	--font-body: 'Lora', serif;
+}
+
+.theme-slate {
+	--color-parchment: #eef2f2;
+	--color-parchment-2: #e4e8ea;
+	--color-parchment-3: #d4d9dc;
+	--color-parchment-4: #b8c0c4;
+	--color-ink: #1e262e;
+	--color-ink-2: #45525e;
+	--color-ink-3: #6c7a86;
+	--color-gold: #5c84a0;
+	--color-gold-2: #7aa4c0;
+	--color-gold-3: #d4e4f0;
+	--color-burgundy: #4a3d5c;
+	--color-sage: #3d5a6b;
+	--color-seal: #5c3a4a;
+}
+
+.theme-midnight {
+	--color-parchment: #1a1a24;
+	--color-parchment-2: #22222e;
+	--color-parchment-3: #2e2e3e;
+	--color-parchment-4: #3e3e50;
+	--color-ink: #e8e4dc;
+	--color-ink-2: #b8b4ac;
+	--color-ink-3: #888480;
+	--color-gold: #a0845c;
+	--color-gold-2: #c4a97a;
+	--color-gold-3: #3a3020;
+	--color-burgundy: #8b4a4a;
+	--color-sage: #5a7a5a;
+	--color-seal: #6b3a3a;
+}
+
+.btn-shimmer {
+	position: relative;
+	overflow: hidden;
+}
+
+.btn-shimmer::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(
+		90deg,
+		transparent 0%,
+		rgba(255, 255, 255, 0.25) 50%,
+		transparent 100%
+	);
+	transform: translateX(-100%);
+	pointer-events: none;
+}
+
+.btn-shimmer:hover::after {
+	animation: shimmer-sweep 2s ease forwards;
+}
+
+@keyframes shimmer-sweep {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(200%);
+	}
+}
+
+.theme-moss {
+	--color-parchment: #edf0e8;
+	--color-parchment-2: #dce3d8;
+	--color-parchment-3: #c8d2c0;
+	--color-parchment-4: #b0bcac;
+	--color-ink: #242c20;
+	--color-ink-2: #4a5c44;
+	--color-ink-3: #708468;
+	--color-gold: #5c845c;
+	--color-gold-2: #7aa47a;
+	--color-gold-3: #d4e0d0;
+	--color-burgundy: #5c4a3a;
+	--color-sage: #3d6b4a;
+	--color-seal: #4a5c3a;
+}

@@ -5,12 +5,14 @@
 	import { locales, localizeHref } from '$lib/paraglide/runtime';
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
+	import { SvelteToast } from '@zerodevx/svelte-toast';
 
 	let { children } = $props();
 </script>
 
 <svelte:head><link rel="icon" href={favicon} /></svelte:head>
 {@render children()}
+<SvelteToast />
 
 <div style="display:none">
 	{#each locales as locale (locale)}
