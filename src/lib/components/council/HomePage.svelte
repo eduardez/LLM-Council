@@ -234,6 +234,11 @@
 						}, 2800);
 					}
 				}}
+				onkeydown={(e) => {
+					if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+						handleConvene();
+					}
+				}}
 			></textarea>
 		</div>
 
