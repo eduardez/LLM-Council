@@ -10,12 +10,14 @@
 	import NavFloat from './NavFloat.svelte';
 	import { personas as personaData } from '$lib/data/personas';
 
+	let { splashDone = false }: { splashDone?: boolean } = $props();
+
 	let personas = $state(personaData);
 	let seated = $state<number[]>([0, 1, 2]);
 	let currentPage = $state<string | null>(null);
 	let menuOpen = $state(false);
 	let question = $state('');
-	let needsConfig = $state(true);
+	let needsConfig = $state(false);
 	let sessionData = $state<{
 		question: string;
 		speeches: Array<{ name: string; speech: string; personaId: number }>;
@@ -44,7 +46,10 @@
 		if (savedTheme && savedTheme !== 'parchment') {
 			document.documentElement.className = `theme-${savedTheme}`;
 		}
-		checkConfig();
+	});
+
+	$effect(() => {
+		if (splashDone) checkConfig();
 	});
 
 	function openPage(page: string) {
