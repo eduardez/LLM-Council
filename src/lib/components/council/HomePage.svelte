@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { IconChevronDown, IconHistory } from '@tabler/icons-svelte';
+	import { IconHistory } from '@tabler/icons-svelte';
 
 	interface Persona {
 		id: number;
@@ -28,8 +28,6 @@
 
 	let promptValue = $state('');
 	let isFocused = $state(false);
-	let histOpen = $state(false);
-	let history = $state<string[]>([]);
 	let dragSrc = $state<number | null>(null);
 	let promptIdx = $state(0);
 	let promptInterval: ReturnType<typeof setInterval> | null = null;
@@ -102,23 +100,16 @@
 
 	function handleConvene() {
 		const q = promptValue.trim() || prompts[promptIdx];
-		addToHistory(q);
+		// Save to history in localStorage
+		try {
+			const saved = localStorage.getItem('council_history');
+			const history = saved ? JSON.parse(saved) : [];
+			if (!history.some((h: any) => h.question === q)) {
+				history.unshift({ question: q, timestamp: Date.now() });
+				localStorage.setItem('council_history', JSON.stringify(history.slice(0, 20)));
+			}
+		} catch {}
 		startSession(q);
-	}
-
-	function addToHistory(q: string) {
-		if (!history.includes(q)) {
-			history = [q, ...history].slice(0, 6);
-		}
-	}
-
-	function toggleHistory() {
-		histOpen = !histOpen;
-	}
-
-	function useHistory(q: string) {
-		promptValue = q;
-		histOpen = false;
 	}
 
 	const conflictedPositions = $derived(getConflictedPositions());
@@ -257,11 +248,20 @@
 		</div>
 
 		<div class="flex items-center justify-between">
-			<span class="text-xs text-ink-3 italic">
-				{seated.length} persona{seated.length !== 1 ? 's' : ''} seated{conflictedPositions.size
-					? ' · ⚡ conflicts detected'
-					: ''}
-			</span>
+			<div class="flex items-center gap-3">
+				<span class="text-xs text-ink-3 italic">
+					{seated.length} persona{seated.length !== 1 ? 's' : ''} seated{conflictedPositions.size
+						? ' · ⚡ conflicts detected'
+						: ''}
+				</span>
+				<button
+					class="flex cursor-pointer items-center gap-1 text-xs text-ink-3 transition-colors duration-150 hover:text-gold"
+					onclick={() => openPage('history')}
+				>
+					<IconHistory size={13} />
+					Past questions
+				</button>
+			</div>
 			<button
 				class="cursor-pointer rounded-lg border border-gold bg-gold px-[26px] py-2.5 font-serif text-sm tracking-wide text-parchment transition-all duration-200 hover:border-ink-2 hover:bg-ink-2"
 				style="font-family: 'Playfair Display', serif;"
@@ -270,39 +270,5 @@
 				Convene the council →
 			</button>
 		</div>
-
-		{#if import.meta.env.DEV}
-			<!-- History -->
-			<button
-				class="mt-2.5 flex cursor-pointer items-center gap-[5px] py-1 text-[11px] text-ink-3 transition-colors duration-150 hover:text-gold"
-				onclick={toggleHistory}
-			>
-				<IconHistory class="text-[13px]" />
-				<span>Past questions</span>
-				<IconChevronDown
-					class="text-xs transition-transform duration-250"
-					style="transform: {histOpen ? 'rotate(180deg)' : ''}"
-				/>
-			</button>
-			<div
-				class="mt-1 max-h-0 overflow-hidden transition-all duration-350 ease-out"
-				class:max-h-[120px]={histOpen}
-			>
-				<div class="rounded-lg border border-parchment-3 bg-parchment-2 px-3 py-2.5">
-					{#if history.length > 0}
-						{#each history as q, i (i)}
-							<button
-								class="block w-full cursor-pointer border-b border-parchment-3 py-[3px] text-left text-xs text-ink-2 italic transition-colors duration-150 last:border-b-0 hover:text-gold"
-								onclick={() => useHistory(q)}
-							>
-								› {q}
-							</button>
-						{/each}
-					{:else}
-						<div class="text-xs text-ink-3 italic">No past questions yet.</div>
-					{/if}
-				</div>
-			</div>
-		{/if}
 	</div>
 </div>

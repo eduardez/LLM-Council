@@ -44,7 +44,7 @@
 	let synthesis = $state('');
 	let displayedSynthesis = $state('');
 	let error = $state('');
-	let brokenSeals = $state<Set<string>>(new Set());
+	let scrollRef = $state<HTMLDivElement | null>(null);
 	let isLoading = $state(false);
 
 	const romans = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII'];
@@ -96,7 +96,6 @@
 		synthesis = '';
 		displayedSynthesis = '';
 		error = '';
-		brokenSeals = new Set();
 		isLoading = true;
 		abortController = new AbortController();
 
@@ -269,9 +268,21 @@
 		return result.sort((a, b) => b.score - a.score);
 	}
 
-	function breakSeal(name: string) {
-		brokenSeals = new Set([...brokenSeals, name]);
-	}
+	$effect(() => {
+		const speechContents = speeches.map((s) => s.speech).join('');
+		const reviewContents = reviews.map((r) => r.text).join('');
+		const synthContent = displayedSynthesis;
+
+		void speechContents;
+		void reviewContents;
+		void synthContent;
+
+		requestAnimationFrame(() => {
+			if (scrollRef) {
+				scrollRef.scrollTop = scrollRef!.scrollHeight;
+			}
+		});
+	});
 </script>
 
 <div
@@ -279,7 +290,7 @@
 	class:invisible={!isVisible}
 	style="transform: {isVisible ? 'translateY(0)' : 'translateY(100%)'};"
 >
-	<div class="flex-1 overflow-y-auto px-4 pt-5 pb-4 sm:px-[22px]">
+	<div bind:this={scrollRef} class="flex-1 overflow-y-auto px-4 pt-5 pb-4 sm:px-[22px]">
 		<div class="mb-4 border-b border-parchment-3 pb-3">
 			<div class="flex items-center justify-between">
 				<button
@@ -400,7 +411,7 @@
 					class="mb-2.5 font-serif text-[13px] text-ink"
 					style="font-family: 'Playfair Display', serif;"
 				>
-					The assembly has deliberated — break the seals to reveal peer rankings
+					The assembly has deliberated — peer rankings
 				</div>
 				{#each voteData as vote, i (i)}
 					<div class="relative mb-[9px] flex items-center gap-2.5">
@@ -412,26 +423,15 @@
 						<div class="relative h-[7px] flex-1 overflow-hidden rounded-sm bg-parchment-3">
 							<div
 								class="h-full rounded-sm bg-gold-2 transition-all duration-700 ease-out"
-								style="width: {brokenSeals.has(vote.name) ? vote.score + '%' : '0%'}"
+								style="width: {vote.score + '%'}"
 							></div>
 						</div>
 						<div
 							class="min-w-[32px] text-right font-serif text-xs text-gold"
-							class:opacity-0={!brokenSeals.has(vote.name)}
-							class:opacity-100={brokenSeals.has(vote.name)}
 							style="font-family: 'Playfair Display', serif;"
 						>
 							{vote.score}{i === 0 ? ' 👑' : ''}
 						</div>
-						{#if !brokenSeals.has(vote.name)}
-							<button
-								class="absolute top-1/2 right-[36px] z-[2] flex h-7 w-7 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-seal text-[13px] transition-all duration-200 hover:scale-110"
-								onclick={() => breakSeal(vote.name)}
-								title="Break the seal"
-							>
-								🔏
-							</button>
-						{/if}
 					</div>
 				{/each}
 			</div>

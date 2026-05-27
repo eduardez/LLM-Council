@@ -35,7 +35,7 @@
 </script>
 
 <div
-	class="absolute inset-3 z-[3] flex flex-col rounded-2xl bg-parchment shadow-2xl shadow-ink/15 transition-all duration-[350ms] ease-[cubic-bezier(0.32,0.72,0,1)]"
+	class="absolute inset-3 z-[3] flex flex-col top-18 rounded-2xl bg-parchment shadow-2xl shadow-ink/15 transition-all duration-[350ms] ease-[cubic-bezier(0.32,0.72,0,1)]"
 	class:invisible={!isVisible}
 	style="transform: {isVisible ? 'translateY(0)' : 'translateY(100%)'};"
 >
@@ -72,9 +72,9 @@
 					onclick={() => toggleSeat(p.id)}
 				>
 					<div class="flex h-full flex-col">
-						<div class="flex flex-1 items-center align-middle m-auto gap-2.5">
+						<div class="flex flex-1 items-center align-middle m-auto">
 							<div
-								class="persona-ribbon flex-shrink-0 rounded-full"
+								class="persona-ribbon h-12 w-1 flex-shrink-0 rounded-full mr-2"
 								style="background: {p.spine};"
 							></div>
 
@@ -210,6 +210,17 @@
 
 	.persona-ribbon {
 		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+		transition:
+			width 0.3s ease,
+			height 0.3s ease;
+	}
+
+	.persona-card.selected .persona-ribbon {
+		width: 0;
+		height: 0;
+		opacity: 0;
+		gap: 0;
+		margin-right: 0;
 	}
 
 

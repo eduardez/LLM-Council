@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { IconArrowLeft, IconRefresh } from '@tabler/icons-svelte';
+	import SearchableDropdown from '$lib/components/ui/SearchableDropdown.svelte';
 
 	type Provider = 'openrouter' | 'openai' | 'anthropic' | 'google' | 'custom';
 
@@ -125,9 +126,8 @@
 		fetchModels();
 	}
 
-	function handleProviderChange(e: Event) {
-		const select = e.target as HTMLSelectElement;
-		provider = select.value as Provider;
+	function handleProviderChange(v: string) {
+		provider = v as Provider;
 		applyProviderDefaults(provider);
 	}
 
@@ -212,18 +212,19 @@
 
 		<div class="mb-3.5">
 			<label for="cfg-provider" class="mb-1 block text-xs font-medium text-ink-2">Provider</label>
-			<select
+			<SearchableDropdown
 				id="cfg-provider"
+				options={[
+					{ value: 'openrouter', label: 'OpenRouter' },
+					{ value: 'openai', label: 'OpenAI' },
+					{ value: 'anthropic', label: 'Anthropic' },
+					{ value: 'google', label: 'Google' },
+					{ value: 'custom', label: 'Custom' }
+				]}
 				value={provider}
-				onchange={handleProviderChange}
-				class="w-full cursor-pointer rounded-md border border-parchment-3 bg-parchment-2 px-[11px] py-2 text-[13px] text-ink transition-colors duration-150 outline-none focus:border-gold-2"
-			>
-				<option value="openrouter">{providerLabel('openrouter')}</option>
-				<option value="openai">{providerLabel('openai')}</option>
-				<option value="anthropic">{providerLabel('anthropic')}</option>
-				<option value="google">{providerLabel('google')}</option>
-				<option value="custom">{providerLabel('custom')}</option>
-			</select>
+				onchange={(v) => handleProviderChange(v)}
+				placeholder="Select provider"
+			/>
 		</div>
 
 		<div class="mb-3.5">
@@ -240,6 +241,19 @@
 			</div>
 		</div>
 
+		<div class="mb-3.5">
+			<label for="cfg-tk" class="mb-1 block text-xs font-medium text-ink-2">API token</label>
+			<input
+				id="cfg-tk"
+				type="password"
+				placeholder="sk-..."
+				class="w-full rounded-md border border-parchment-3 bg-parchment-2 px-[11px] py-2 text-[13px] text-ink transition-colors duration-150 outline-none focus:border-gold-2"
+				bind:value={token}
+			/>
+			<div class="mt-[3px] text-[11px] text-ink-3 italic">
+				Stored in localStorage, never sent to Council servers.
+			</div>
+		</div>
 		<div class="mb-3.5">
 			<div class="mb-1 flex items-center justify-between">
 				<label for="cfg-model" class="text-xs font-medium text-ink-2">Model</label>
@@ -262,15 +276,13 @@
 					bind:value={model}
 				/>
 			{:else}
-				<select
+				<SearchableDropdown
 					id="cfg-model"
-					class="w-full cursor-pointer rounded-md border border-parchment-3 bg-parchment-2 px-[11px] py-2 text-[13px] text-ink transition-colors duration-150 outline-none focus:border-gold-2"
-					bind:value={model}
-				>
-					{#each availableModels as m (m)}
-						<option value={m}>{m}</option>
-					{/each}
-				</select>
+					options={availableModels.map((m) => ({ value: m, label: m }))}
+					value={model}
+					onchange={(v) => (model = v)}
+					placeholder="Select model"
+				/>
 			{/if}
 			{#if fetchModelsError}
 				<div class="mt-[3px] text-[11px] text-burgundy italic">{fetchModelsError}</div>
@@ -283,19 +295,6 @@
 			</button>
 		</div>
 
-		<div class="mb-3.5">
-			<label for="cfg-tk" class="mb-1 block text-xs font-medium text-ink-2">API token</label>
-			<input
-				id="cfg-tk"
-				type="password"
-				placeholder="sk-..."
-				class="w-full rounded-md border border-parchment-3 bg-parchment-2 px-[11px] py-2 text-[13px] text-ink transition-colors duration-150 outline-none focus:border-gold-2"
-				bind:value={token}
-			/>
-			<div class="mt-[3px] text-[11px] text-ink-3 italic">
-				Stored in localStorage, never sent to Council servers.
-			</div>
-		</div>
 
 		<div class="flex items-center">
 			<button

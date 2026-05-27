@@ -4,7 +4,8 @@
 		IconLanguage,
 		IconMasksTheater,
 		IconSettings,
-		IconSun
+		IconSun,
+		IconHistory
 	} from '@tabler/icons-svelte';
 
 	interface Props {
@@ -103,6 +104,17 @@
 						<IconSun size={16} stroke={1.5} />
 					</div>
 					<span class="text-[11px] font-medium text-ink">Theme</span>
+				</button>
+
+				<!-- History -->
+				<button
+					class="flex cursor-pointer items-center gap-2 rounded-lg px-3 py-2 transition-colors duration-150 hover:bg-parchment-3"
+					onclick={() => openPage('history')}
+				>
+					<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-gold-3 text-gold">
+						<IconHistory size={16} stroke={1.5} />
+					</div>
+					<span class="text-[11px] font-medium text-ink">History</span>
 				</button>
 
 				<!-- Sign in -->

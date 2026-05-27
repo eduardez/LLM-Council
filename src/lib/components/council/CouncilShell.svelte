@@ -6,6 +6,7 @@
 	import ConfigPage from './ConfigPage.svelte';
 	import LangPage from './LangPage.svelte';
 	import ThemePage from './ThemePage.svelte';
+	import HistoryPage from './HistoryPage.svelte';
 	import NavFloat from './NavFloat.svelte';
 
 	interface Persona {
@@ -152,6 +153,12 @@
 	<LangPage isVisible={currentPage === 'lang'} {closePage} />
 
 	<ThemePage isVisible={currentPage === 'theme'} {closePage} />
+
+	<HistoryPage
+		{startSession}
+		isVisible={currentPage === 'history'}
+		{closePage}
+	/>
 
 	<NavFloat {currentPage} {menuOpen} {handleMainBtn} {openPage} />
 </div>
