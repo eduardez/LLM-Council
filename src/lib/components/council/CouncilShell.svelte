@@ -81,9 +81,63 @@
 		sessionData = null;
 	}
 
+	function restoreSession(data: {
+		question: string;
+		seated: number[];
+		speeches: Array<{ name: string; speech: string; personaId: number }>;
+		reviews: Array<{
+			name: string;
+			review: string;
+			scores: Array<{ name: string; score: number }>;
+		}>;
+		synthesis: string;
+	}) {
+		seated = data.seated;
+		sessionData = {
+			question: data.question,
+			speeches: data.speeches,
+			reviews: data.reviews,
+			synthesis: data.synthesis
+		};
+		currentPage = 'session';
+	}
+
 	function setSessionData(data: typeof sessionData) {
 		sessionData = data;
 	}
+
+	$effect(() => {
+		const data = sessionData;
+		if (!data) return;
+		try {
+			const saved = localStorage.getItem('council_sessions');
+			const sessions: Array<{
+				id: number;
+				question: string;
+				timestamp: number;
+				seated: number[];
+				speeches: Array<{ name: string; speech: string; personaId: number }>;
+				reviews: Array<{
+					name: string;
+					review: string;
+					scores: Array<{ name: string; score: number }>;
+				}>;
+				synthesis: string;
+			}> = saved ? JSON.parse(saved) : [];
+			if (!sessions.some((s) => s.question === data.question)) {
+				sessions.unshift({
+					id: Date.now(),
+					question: data.question,
+					timestamp: Date.now(),
+					seated,
+					speeches: data.speeches,
+					reviews: data.reviews,
+					synthesis: data.synthesis
+				});
+				localStorage.setItem('council_sessions', JSON.stringify(sessions.slice(0, 20)));
+			}
+		} catch {}
+	});
 </script>
 
 <svelte:head>
@@ -133,7 +187,7 @@
 	<ThemePage isVisible={currentPage === 'theme'} {closePage} />
 
 	<HistoryPage
-		{startSession}
+		{restoreSession}
 		isVisible={currentPage === 'history'}
 		{closePage}
 	/>

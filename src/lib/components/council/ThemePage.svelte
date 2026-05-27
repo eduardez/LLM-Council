@@ -186,7 +186,7 @@
 			onclick={closePage}
 		>
 			<IconArrowLeft size={18} stroke={1.5} />
-			<span>Back to the council</span>
+			<span>Back to the Council</span>
 		</button>
 	</div>
 </div>

@@ -100,15 +100,6 @@
 
 	function handleConvene() {
 		const q = promptValue.trim() || prompts[promptIdx];
-		// Save to history in localStorage
-		try {
-			const saved = localStorage.getItem('council_history');
-			const history = saved ? JSON.parse(saved) : [];
-			if (!history.some((h: any) => h.question === q)) {
-				history.unshift({ question: q, timestamp: Date.now() });
-				localStorage.setItem('council_history', JSON.stringify(history.slice(0, 20)));
-			}
-		} catch {}
 		startSession(q);
 	}
 

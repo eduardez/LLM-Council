@@ -1,54 +1,50 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { IconArrowLeft, IconTrash } from '@tabler/icons-svelte';
 
-	interface HistoryEntry {
+	interface SavedSession {
+		id: number;
 		question: string;
 		timestamp: number;
+		seated: number[];
+		speeches: Array<{ name: string; speech: string; personaId: number }>;
+		reviews: Array<{
+			name: string;
+			review: string;
+			scores: Array<{ name: string; score: number }>;
+		}>;
+		synthesis: string;
 	}
 
 	interface Props {
 		isVisible: boolean;
-		startSession: (question: string) => void;
+		restoreSession: (data: SavedSession) => void;
 		closePage: () => void;
 	}
 
-	let { isVisible, startSession, closePage }: Props = $props();
-	let history = $state<HistoryEntry[]>([]);
+	let { isVisible, restoreSession, closePage }: Props = $props();
+	let history = $state<SavedSession[]>([]);
 
-	onMount(() => {
-		loadHistory();
+	$effect(() => {
+		if (isVisible) loadHistory();
 	});
 
 	function loadHistory() {
 		try {
-			const saved = localStorage.getItem('council_history');
+			const saved = localStorage.getItem('council_sessions');
 			if (saved) {
 				history = JSON.parse(saved);
 			}
 		} catch {}
 	}
 
-	function saveHistory() {
-		localStorage.setItem('council_history', JSON.stringify(history));
-	}
-
-	function addToHistory(q: string) {
-		if (!history.some(h => h.question === q)) {
-			history = [{ question: q, timestamp: Date.now() }, ...history].slice(0, 20);
-			saveHistory();
-		}
-	}
-
-	function handleSelect(q: string) {
+	function handleSelect(entry: SavedSession) {
 		closePage();
-		// Small delay so page closes before session starts
-		setTimeout(() => startSession(q), 400);
+		setTimeout(() => restoreSession(entry), 400);
 	}
 
 	function clearHistory() {
 		history = [];
-		localStorage.removeItem('council_history');
+		localStorage.removeItem('council_sessions');
 	}
 
 	function formatDate(ts: number): string {
@@ -85,10 +81,10 @@
 
 		{#if history.length > 0}
 			<div class="flex flex-col gap-2">
-				{#each history as entry, i (entry.timestamp)}
+				{#each history as entry, i (entry.id)}
 					<button
 						class="group flex cursor-pointer items-start gap-3 rounded-lg border border-parchment-3 bg-parchment-2 p-3 text-left transition-all duration-150 hover:border-gold-2 hover:bg-parchment"
-						onclick={() => handleSelect(entry.question)}
+						onclick={() => handleSelect(entry)}
 					>
 						<span class="mt-0.5 flex-shrink-0 text-sm text-ink-3">{i + 1}.</span>
 						<div class="flex-1 min-w-0">
@@ -122,7 +118,7 @@
 			onclick={closePage}
 		>
 			<IconArrowLeft size={18} stroke={1.5} />
-			<span>Back to the sanctum</span>
+			<span>Back to the Council</span>
 		</button>
 	</div>
 </div>
