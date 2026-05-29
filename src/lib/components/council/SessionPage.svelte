@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { streamSpeech, streamReview, streamSynthesis } from '$lib/ai/council';
 	import type { CouncilConfig, Persona as AIPersona, Speech, Review } from '$lib/ai/council';
-	import { IconArrowLeft } from '@tabler/icons-svelte';
+	import { IconArrowLeft, IconCopy } from '@tabler/icons-svelte';
+	import Markdown from '$lib/components/ui/Markdown.svelte';
 
 	interface Persona {
 		id: number;
@@ -247,6 +248,14 @@
 		return scores;
 	}
 
+	async function copyText(text: string) {
+		try {
+			await navigator.clipboard.writeText(text);
+		} catch {
+			// clipboard not available
+		}
+	}
+
 	function getVoteData(): Array<{ name: string; score: number }> {
 		const activePersonas = seated
 			.map((id) => personas.find((p) => p.id === id))
@@ -310,7 +319,10 @@
 					<IconArrowLeft size={16} stroke={1.5} />
 					<span>Council</span>
 				</button>
-				<div class="truncate font-serif text-sm text-ink sm:text-base" style="font-family: 'Cinzel Decorative', serif;">
+				<div
+					class="truncate font-serif text-sm text-ink sm:text-base"
+					style="font-family: 'Cinzel Decorative', serif;"
+				>
 					Council in session
 				</div>
 			</div>
@@ -349,10 +361,7 @@
 								{persona.glyph}
 							</div>
 							<div>
-								<div
-									class="font-serif text-[13px] font-medium text-ink"
-									style="font-family: 'Cinzel Decorative', serif;"
-								>
+								<div class="font-serif text-[13px] font-medium text-ink">
 									{persona.name}
 								</div>
 								<div class="text-[10px] text-ink-3">{persona.role}</div>
@@ -374,6 +383,15 @@
 									Done
 								{/if}
 							</span>
+							{#if speech.speech !== '' && !speech.streaming}
+								<button
+									class="flex cursor-pointer items-center justify-center rounded-md p-1 text-ink-3 transition-all duration-150 hover:bg-parchment-3 hover:text-ink"
+									onclick={() => copyText(speech.speech)}
+									title="Copy speech"
+								>
+									<IconCopy size={14} stroke={1.5} />
+								</button>
+							{/if}
 						</div>
 						<div class="min-h-[32px] px-[13px] py-2.5 text-[13px] leading-relaxed text-ink-2">
 							{#if speech.speech === '' && !speech.streaming}
@@ -384,12 +402,13 @@
 								</div>
 								<div
 									class="animate-[fadeRoman_0.4s_ease_forwards] font-serif text-xl tracking-[8px] text-gold-2"
-									style="font-family: 'Cinzel Decorative', serif;"
 								>
 									{romans[i] || ''}
 								</div>
 							{:else}
-								{speech.speech}
+								<div class="markdown-content">
+									<Markdown content={speech.speech} />
+								</div>
 								{#if speech.streaming}
 									<span
 										class="ml-[1px] inline-block h-3 w-[2px] animate-[blink_0.75s_infinite] bg-gold align-[-2px]"
@@ -405,22 +424,14 @@
 		<!-- Deliberating -->
 		{#if stage === 'reviews' && reviews.some((r) => r.streaming)}
 			<div class="mb-3 rounded-lg border border-parchment-3 bg-parchment p-[13px] text-center">
-				<div
-					class="font-serif text-[13px] text-ink-3 italic"
-					style="font-family: 'Cinzel Decorative', serif;"
-				>
-					Council deliberating…
-				</div>
+				<div class="font-serif text-[13px] text-ink-3 italic">Council deliberating…</div>
 			</div>
 		{/if}
 
 		<!-- Votes -->
 		{#if (stage === 'reviews' || stage === 'synthesis' || stage === 'complete') && reviews.length > 0}
 			<div class="rounded-lg border border-parchment-3 bg-parchment p-[13px]">
-				<div
-					class="mb-2.5 font-serif text-[13px] text-ink"
-					style="font-family: 'Cinzel Decorative', serif;"
-				>
+				<div class="mb-2.5 font-serif text-[13px] text-ink">
 					The assembly has deliberated — peer rankings
 				</div>
 				{#each voteData as vote, i (i)}
@@ -438,7 +449,6 @@
 						</div>
 						<div
 							class="min-w-[24px] text-right font-serif text-[11px] text-gold sm:min-w-[32px] sm:text-xs"
-							style="font-family: 'Cinzel Decorative', serif;"
 						>
 							{vote.score}{i === 0 ? ' 👑' : ''}
 						</div>
@@ -457,20 +467,26 @@
 						📖
 					</div>
 					<div>
-						<div
-							class="font-serif text-[13px] text-ink"
-							style="font-family: 'Cinzel Decorative', serif;"
-						>
-							The Council Scribe
-						</div>
+						<div class="font-serif text-[13px] text-ink">The Council Scribe</div>
 						<div class="text-[11px] text-ink-3">Unified synthesis of all voices</div>
 					</div>
-					<span class="ml-auto rounded-[10px] bg-gold-3 px-2 py-[2px] text-[10px] text-gold italic"
-						>Final word</span
-					>
+					<div class="ml-auto flex items-center gap-1">
+						{#if stage === 'complete' || displayedSynthesis !== ''}
+							<button
+								class="flex cursor-pointer items-center justify-center rounded-md p-1 text-ink-3 transition-all duration-150 hover:bg-gold-3 hover:text-gold"
+								onclick={() => copyText(displayedSynthesis)}
+								title="Copy synthesis"
+							>
+								<IconCopy size={14} stroke={1.5} />
+							</button>
+						{/if}
+						<span class="rounded-[10px] bg-gold-3 px-2 py-[2px] text-[10px] text-gold italic"
+							>Final word</span
+						>
+					</div>
 				</div>
-				<div class="text-[13px] leading-relaxed text-ink-2 italic">
-					{displayedSynthesis}
+				<div class="markdown-content text-[13px] leading-relaxed text-ink-2">
+					<Markdown content={displayedSynthesis} />
 					{#if stage === 'synthesis'}
 						<span
 							class="ml-[1px] inline-block h-3 w-[2px] animate-[blink_0.75s_infinite] bg-gold align-[-2px]"
@@ -493,6 +509,51 @@
 </div>
 
 <style>
+	:global(.markdown-content p) {
+		margin-bottom: 0.5rem;
+	}
+	:global(.markdown-content p:last-child) {
+		margin-bottom: 0;
+	}
+	:global(.markdown-content ul),
+	:global(.markdown-content ol) {
+		margin: 0.25rem 0;
+		padding-left: 1.25rem;
+	}
+	:global(.markdown-content li) {
+		margin-bottom: 0.125rem;
+	}
+	:global(.markdown-content code) {
+		background: rgba(0, 0, 0, 0.06);
+		border-radius: 3px;
+		padding: 1px 4px;
+		font-size: 0.85em;
+	}
+	:global(.markdown-content pre) {
+		background: rgba(0, 0, 0, 0.06);
+		border-radius: 6px;
+		padding: 0.75rem;
+		margin-bottom: 0.5rem;
+		overflow-x: auto;
+	}
+	:global(.markdown-content pre code) {
+		background: none;
+		padding: 0;
+	}
+	:global(.markdown-content blockquote) {
+		border-left: 2px solid var(--color-gold-2, #c4a35a);
+		padding-left: 0.75rem;
+		margin-bottom: 0.5rem;
+		font-style: italic;
+	}
+	:global(.markdown-content strong) {
+		font-weight: 600;
+	}
+	:global(.markdown-content a) {
+		color: var(--color-gold, #a67c00);
+		text-decoration: underline;
+	}
+
 	@keyframes blink {
 		0%,
 		49% {

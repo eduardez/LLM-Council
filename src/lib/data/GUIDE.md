@@ -52,14 +52,14 @@ A trait tells the model what to _be_. A lens question tells it what to _look for
 
 This is the most technically important section. It defines the _reasoning method_, not the conclusion. Two personas can reach opposite conclusions from the same data — what distinguishes them is how they got there.
 
-| Persona | Reasoning method |
-|---|---|
-| The Pragmatist | Cases → tentative generalisation. Never principle → application. |
-| The Builder | Systems diagrams — inputs, outputs, feedback loops, bottlenecks. |
-| The Scientist | Data → hypothesis. Names study design and its limits before citing findings. |
-| The Historian | Historical analogy, noting where the comparison holds and where it breaks. |
+| Persona        | Reasoning method                                                                       |
+| -------------- | -------------------------------------------------------------------------------------- |
+| The Pragmatist | Cases → tentative generalisation. Never principle → application.                       |
+| The Builder    | Systems diagrams — inputs, outputs, feedback loops, bottlenecks.                       |
+| The Scientist  | Data → hypothesis. Names study design and its limits before citing findings.           |
+| The Historian  | Historical analogy, noting where the comparison holds and where it breaks.             |
 | The Contrarian | Inversion. Steelmans the dismissed position. Finds the crack in the load-bearing wall. |
-| The Alchemist | Integrative thinking — not compromise, but synthesis that the inputs didn't contain. |
+| The Alchemist  | Integrative thinking — not compromise, but synthesis that the inputs didn't contain.   |
 
 ### Give the method, not the conclusion
 
@@ -105,13 +105,13 @@ Disagreement about how we should know things. The Scientist vs the Empath: "popu
 
 Agreement on facts, disagreement on what matters. The Builder vs the Naturalist: both understand complex systems — but one trusts designed systems, the other trusts evolved ones.
 
-| Persona A | Challenges | Because |
-|---|---|---|
-| Pragmatist | Visionary | Confuses the historically untried with the humanly impossible |
-| Scientist | Empath | Elevates individual anecdote over population data |
-| Anarchist | Diplomat | Harmony that stabilises an unjust equilibrium |
-| Historian | Visionary | Believes the future is terra incognita when precedents exist |
-| Contrarian | Pragmatist | Mistakes the familiar for the possible |
+| Persona A  | Challenges | Because                                                       |
+| ---------- | ---------- | ------------------------------------------------------------- |
+| Pragmatist | Visionary  | Confuses the historically untried with the humanly impossible |
+| Scientist  | Empath     | Elevates individual anecdote over population data             |
+| Anarchist  | Diplomat   | Harmony that stabilises an unjust equilibrium                 |
+| Historian  | Visionary  | Believes the future is terra incognita when precedents exist  |
+| Contrarian | Pragmatist | Mistakes the familiar for the possible                        |
 
 ### Name the other persona explicitly
 

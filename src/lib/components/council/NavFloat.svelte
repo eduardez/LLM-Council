@@ -120,7 +120,8 @@
 				<!-- Sign in -->
 				<button
 					class="nav-btn flex cursor-pointer flex-col items-center gap-1 rounded-lg px-2 py-2 transition-colors duration-150 hover:bg-parchment-3 sm:flex-row sm:gap-2 sm:px-3"
-					onclick={() => showToast('Sign-in is not available in this static build. Config is stored locally.')}
+					onclick={() =>
+						showToast('Sign-in is not available in this static build. Config is stored locally.')}
 				>
 					<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-sage/10 text-sage">
 						<IconKey size={16} stroke={1.5} />

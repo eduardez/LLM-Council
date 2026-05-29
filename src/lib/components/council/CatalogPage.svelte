@@ -35,7 +35,7 @@
 </script>
 
 <div
-	class="absolute inset-3 z-[3] flex flex-col top-18 rounded-2xl bg-parchment shadow-2xl shadow-ink/15 transition-all duration-[350ms] ease-[cubic-bezier(0.32,0.72,0,1)]"
+	class="absolute inset-3 top-18 z-[3] flex flex-col rounded-2xl bg-parchment shadow-2xl shadow-ink/15 transition-all duration-[350ms] ease-[cubic-bezier(0.32,0.72,0,1)]"
 	class:invisible={!isVisible}
 	style="transform: {isVisible ? 'translateY(0)' : 'translateY(100%)'};"
 >
@@ -58,7 +58,7 @@
 				<input
 					type="text"
 					placeholder="Search…"
-					class="w-full rounded-md border border-parchment-3 bg-parchment-2 px-3 py-[7px] text-xs text-ink outline-none transition-colors duration-150 placeholder:text-ink-3 focus:border-gold-2 sm:w-[155px]"
+					class="w-full rounded-md border border-parchment-3 bg-parchment-2 px-3 py-[7px] text-xs text-ink transition-colors duration-150 outline-none placeholder:text-ink-3 focus:border-gold-2 sm:w-[155px]"
 					bind:value={searchQuery}
 				/>
 			</div>
@@ -80,10 +80,9 @@
 							></div>
 
 							<div class="min-w-0 flex-1">
-								<div class="catalog-name-row flex items-center gap-2 min-w-0">
+								<div class="catalog-name-row flex min-w-0 items-center gap-2">
 									<div
 										class="catalog-title truncate text-[22px] leading-tight font-semibold text-ink"
-										style="font-family: 'Cinzel Decorative', serif; letter-spacing: -0.02em;"
 									>
 										{p.name}
 									</div>
@@ -99,7 +98,7 @@
 							>
 								{p.tag}
 							</span>
-							<span class="text-[12px] leading-relaxed text-ink-3 line-clamp-1">
+							<span class="line-clamp-1 text-[12px] leading-relaxed text-ink-3">
 								{p.role}
 							</span>
 						</div>
@@ -221,7 +220,11 @@
 		content: '';
 		position: absolute;
 		inset: 0;
-		background: linear-gradient(135deg, color-mix(in srgb, white 18%, transparent), transparent 34%);
+		background: linear-gradient(
+			135deg,
+			color-mix(in srgb, white 18%, transparent),
+			transparent 34%
+		);
 		pointer-events: none;
 		border-radius: inherit;
 	}

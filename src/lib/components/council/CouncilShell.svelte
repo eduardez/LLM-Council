@@ -171,7 +171,7 @@
 </svelte:head>
 
 <div
-	class="council-shell relative flex w-full max-w-6xl flex-col overflow-hidden bg-parchment text-ink text-[15px] leading-relaxed"
+	class="council-shell relative flex w-full max-w-6xl flex-col overflow-hidden bg-parchment text-[15px] leading-relaxed text-ink"
 	style="font-family: var(--font-body);"
 >
 	<HomePage {personas} {seated} {reorderSeats} {openPage} {startSession} isVisible={!currentPage} />
@@ -191,12 +191,11 @@
 					Configure Your Council
 				</div>
 				<p class="mb-5 text-sm leading-relaxed text-ink-3">
-					Choose an AI provider and enter your API key to start convening the council.
-					Everything stays in your browser.
+					Choose an AI provider and enter your API key to start convening the council. Everything
+					stays in your browser.
 				</p>
 				<button
 					class="cursor-pointer rounded-lg border border-gold bg-gold px-6 py-2.5 font-serif text-sm tracking-wide text-parchment transition-all duration-200 hover:border-ink-2 hover:bg-ink-2"
-					style="font-family: 'Cinzel Decorative', serif;"
 					onclick={() => openPage('config')}
 				>
 					Set up configuration →
@@ -236,11 +235,7 @@
 
 	<ThemePage isVisible={currentPage === 'theme'} {closePage} />
 
-	<HistoryPage
-		{restoreSession}
-		isVisible={currentPage === 'history'}
-		{closePage}
-	/>
+	<HistoryPage {restoreSession} isVisible={currentPage === 'history'} {closePage} />
 
 	<NavFloat {currentPage} {menuOpen} {handleMainBtn} {openPage} />
 </div>

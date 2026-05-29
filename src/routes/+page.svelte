@@ -7,11 +7,7 @@
 	let phraseIdx = $state(0);
 	let splashDone = $state(false);
 
-	const phrases = [
-		'Ask anything…',
-		'Welcome back',
-		'Loading...'
-	];
+	const phrases = ['Ask anything…', 'Welcome back', 'Loading...'];
 
 	onMount(() => {
 		const t1 = setTimeout(() => {
@@ -46,12 +42,12 @@
 			>
 				✦ The Council
 			</div>
-			<div class="mb-4 h-px w-16 bg-gradient-to-r from-transparent via-gold/40 to-transparent sm:mb-6 sm:w-20"></div>
+			<div
+				class="mb-4 h-px w-16 bg-gradient-to-r from-transparent via-gold/40 to-transparent sm:mb-6 sm:w-20"
+			></div>
 			<div class="h-8 overflow-hidden">
 				{#key phraseIdx}
-					<span
-						class="block animate-pulse text-center text-base italic text-ink/40 sm:text-lg"
-					>
+					<span class="block animate-pulse text-center text-base text-ink/40 italic sm:text-lg">
 						{phrases[phraseIdx]}
 					</span>
 				{/key}

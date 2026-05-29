@@ -21,15 +21,11 @@
 
 	let filteredOptions = $derived(
 		filterText
-			? options.filter((o) =>
-					o.label.toLowerCase().includes(filterText.toLowerCase())
-				)
+			? options.filter((o) => o.label.toLowerCase().includes(filterText.toLowerCase()))
 			: options
 	);
 
-	let selectedLabel = $derived(
-		options.find((o) => o.value === value)?.label || ''
-	);
+	let selectedLabel = $derived(options.find((o) => o.value === value)?.label || '');
 
 	function toggleOpen() {
 		isOpen = !isOpen;
@@ -62,10 +58,7 @@
 
 		switch (e.key) {
 			case 'ArrowDown':
-				highlightedIndex = Math.min(
-					highlightedIndex + 1,
-					filteredOptions.length - 1
-				);
+				highlightedIndex = Math.min(highlightedIndex + 1, filteredOptions.length - 1);
 				e.preventDefault();
 				break;
 			case 'ArrowUp':
@@ -135,7 +128,9 @@
 			{selectedLabel || placeholder}
 		</span>
 		<svg
-			class="h-3 w-3 flex-shrink-0 text-ink-3 transition-transform duration-150 {isOpen ? 'rotate-180' : ''}"
+			class="h-3 w-3 flex-shrink-0 text-ink-3 transition-transform duration-150 {isOpen
+				? 'rotate-180'
+				: ''}"
 			viewBox="0 0 10 6"
 			fill="none"
 		>
@@ -152,7 +147,7 @@
 	{#if isOpen}
 		<div
 			id={listboxId}
-			class="absolute left-0 right-0 top-full z-10 mt-1 rounded-md border border-parchment-3 bg-parchment shadow-lg"
+			class="absolute top-full right-0 left-0 z-10 mt-1 rounded-md border border-parchment-3 bg-parchment shadow-lg"
 			role="listbox"
 		>
 			<input
@@ -165,9 +160,7 @@
 			/>
 			<div class="max-h-[200px] overflow-y-auto">
 				{#if filteredOptions.length === 0}
-					<div class="px-3 py-1.5 text-xs italic text-ink-3">
-						No options found
-					</div>
+					<div class="px-3 py-1.5 text-xs text-ink-3 italic">No options found</div>
 				{:else}
 					{#each filteredOptions as option, i (option.value)}
 						<div

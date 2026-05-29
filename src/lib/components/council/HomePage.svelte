@@ -122,7 +122,44 @@
 		<div class="mb-3 text-center text-[11px] text-ink-3 italic sm:mb-4 sm:text-xs">
 			A chamber of minds. One question. Many voices.
 		</div>
-		<div class="mb-[14px] text-center text-xs tracking-[4px] text-gold-2 sm:mb-[18px] sm:text-sm sm:tracking-[6px]">· · ✦ · ·</div>
+		<div
+			class="mb-[14px] text-center text-xs tracking-[4px] text-gold-2 sm:mb-[18px] sm:text-sm sm:tracking-[6px]"
+		>
+			· · ✦ · ·
+		</div>
+
+		<!-- Prompt -->
+		<div class="mb-2 text-[11px] font-medium tracking-[0.1em] text-ink-3 uppercase">
+			Your question
+		</div>
+		<div class="relative mb-2.5 flex min-h-0 flex-1 flex-col" class:focused={isFocused}>
+			<span
+				class="pointer-events-none absolute top-2.5 right-2.5 text-base text-ink-3 transition-opacity duration-200"
+				class:opacity-30={isFocused}>✒</span
+			>
+			<textarea
+				class="min-h-[60px] w-full flex-1 resize-none rounded-lg border border-parchment-3 bg-parchment-2 px-4 py-3 pr-9 text-sm leading-relaxed text-ink transition-all duration-200 outline-none placeholder:text-ink-3 placeholder:italic focus:border-gold-2 focus:bg-parchment"
+				placeholder={prompts[promptIdx]}
+				bind:value={promptValue}
+				onfocus={() => {
+					isFocused = true;
+					if (promptInterval) clearInterval(promptInterval);
+				}}
+				onblur={() => {
+					isFocused = false;
+					if (!promptValue) {
+						promptInterval = setInterval(() => {
+							promptIdx = (promptIdx + 1) % prompts.length;
+						}, 2800);
+					}
+				}}
+				onkeydown={(e) => {
+					if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+						handleConvene();
+					}
+				}}
+			></textarea>
+		</div>
 
 		<!-- Seats -->
 		<div
@@ -134,7 +171,7 @@
 			</span>
 		</div>
 		<div class="relative mb-[18px]">
-			<div class="flex min-h-[80px] flex-nowrap items-end gap-2 overflow-x-auto pb-1 pt-5">
+			<div class="flex min-h-[80px] flex-nowrap items-end gap-2 overflow-x-auto pt-5 pb-1">
 				{#each slots as idx, pos (pos)}
 					{#if idx !== null}
 						{@const m = personas.find((p) => p.id === idx)}
@@ -159,7 +196,6 @@
 									{m.glyph}
 									<span
 										class="absolute -top-[6px] -right-[6px] flex h-[18px] w-[18px] items-center justify-center rounded-full bg-gold font-serif text-[10px] text-parchment"
-										style="font-family: 'Cinzel Decorative', serif;"
 									>
 										{pos + 1}
 									</span>
@@ -181,10 +217,7 @@
 									class="pointer-events-none absolute bottom-[60px] left-1/2 z-20 w-[160px] -translate-x-1/2 scale-[0.85] rounded-lg border border-gold-2 bg-parchment px-3 py-2.5 opacity-0 shadow-[0_2px_12px_rgba(44,36,22,0.10)] transition-all duration-200 group-hover:scale-100 group-hover:opacity-100"
 									style="transform-origin: bottom center;"
 								>
-									<div
-										class="mb-1 font-serif text-xs text-ink"
-										style="font-family: 'Cinzel Decorative', serif;"
-									>
+									<div class="mb-1 font-serif text-xs text-ink">
 										{m.name}
 									</div>
 									<div class="text-[11px] leading-relaxed text-ink-3 italic">{m.quote}</div>
@@ -209,39 +242,6 @@
 			</div>
 		</div>
 
-		<!-- Prompt -->
-		<div class="mb-2 text-[11px] font-medium tracking-[0.1em] text-ink-3 uppercase">
-			Your question
-		</div>
-		<div class="relative mb-2.5 flex min-h-0 flex-1 flex-col" class:focused={isFocused}>
-			<span
-				class="pointer-events-none absolute top-2.5 right-2.5 text-base text-ink-3 transition-opacity duration-200"
-				class:opacity-30={isFocused}>✒</span
-			>
-			<textarea
-				class="min-h-[60px] flex-1 w-full resize-none rounded-lg border border-parchment-3 bg-parchment-2 px-4 py-3 pr-9 text-sm leading-relaxed text-ink transition-all duration-200 outline-none placeholder:text-ink-3 placeholder:italic focus:border-gold-2 focus:bg-parchment"
-				placeholder={prompts[promptIdx]}
-				bind:value={promptValue}
-				onfocus={() => {
-					isFocused = true;
-					if (promptInterval) clearInterval(promptInterval);
-				}}
-				onblur={() => {
-					isFocused = false;
-					if (!promptValue) {
-						promptInterval = setInterval(() => {
-							promptIdx = (promptIdx + 1) % prompts.length;
-						}, 2800);
-					}
-				}}
-				onkeydown={(e) => {
-					if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
-						handleConvene();
-					}
-				}}
-			></textarea>
-		</div>
-
 		<div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
 			<div class="flex flex-wrap items-center gap-x-3 gap-y-1">
 				<span class="text-[11px] text-ink-3 italic sm:text-xs">
@@ -259,7 +259,6 @@
 			</div>
 			<button
 				class="cursor-pointer rounded-lg border border-gold bg-gold px-5 py-2.5 text-sm tracking-wide text-parchment transition-all duration-200 hover:border-ink-2 hover:bg-ink-2 sm:px-[26px]"
-				style="font-family: 'Cinzel Decorative', serif;"
 				onclick={handleConvene}
 			>
 				Convene the council →

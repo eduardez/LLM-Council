@@ -87,11 +87,14 @@
 						onclick={() => handleSelect(entry)}
 					>
 						<span class="mt-0.5 flex-shrink-0 text-sm text-ink-3">{i + 1}.</span>
-						<div class="flex-1 min-w-0">
-							<div class="text-sm leading-relaxed text-ink truncate">{entry.question}</div>
+						<div class="min-w-0 flex-1">
+							<div class="truncate text-sm leading-relaxed text-ink">{entry.question}</div>
 							<div class="mt-1 text-[11px] text-ink-3 italic">{formatDate(entry.timestamp)}</div>
 						</div>
-						<span class="mt-0.5 flex-shrink-0 text-xs text-gold opacity-0 transition-opacity group-hover:opacity-100">→</span>
+						<span
+							class="mt-0.5 flex-shrink-0 text-xs text-gold opacity-0 transition-opacity group-hover:opacity-100"
+							>→</span
+						>
 					</button>
 				{/each}
 			</div>
@@ -105,7 +108,7 @@
 			</button>
 		{:else}
 			<div class="mt-8 text-center">
-				<div class="text-3xl text-ink-3 mb-2">📜</div>
+				<div class="mb-2 text-3xl text-ink-3">📜</div>
 				<div class="text-sm text-ink-3 italic">No past questions yet.</div>
 				<div class="mt-1 text-xs text-ink-3">Questions asked to the Council will appear here.</div>
 			</div>

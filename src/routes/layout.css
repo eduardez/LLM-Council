@@ -17,7 +17,7 @@
 	--color-burgundy: #8b1a1a;
 	--color-sage: #5a6a5a;
 	--color-seal: #a03333;
-	--font-serif: 'Cinzel Decorative', serif;
+	--font-serif: Georgia, 'Times New Roman', serif;
 	--font-body: 'Noto Sans', sans-serif;
 }
 
@@ -111,8 +111,6 @@
 	--color-sage: #4a7a5a;
 	--color-seal: #208a4a;
 }
-
-
 
 /* ─────────────────────────────────────────────
    DARK MONOCHROME VARIATIONS
