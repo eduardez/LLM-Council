@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { IconHistory } from '@tabler/icons-svelte';
+	import * as m from '$lib/paraglide/messages';
 
 	interface Persona {
 		id: number;
@@ -32,13 +33,13 @@
 	let promptIdx = $state(0);
 	let promptInterval: ReturnType<typeof setInterval> | null = null;
 
-	const prompts = [
-		'What should humanity prioritise in the next decade?',
-		'Is genuine consensus ever possible, or only the illusion of it?',
-		'What does progress actually mean when measured in centuries?',
-		'Which human instinct causes the most unnecessary suffering?',
-		'Can a society be both free and equal — or must it choose?'
-	];
+	const prompts = $derived([
+		m.home_prompt_1(),
+		m.home_prompt_2(),
+		m.home_prompt_3(),
+		m.home_prompt_4(),
+		m.home_prompt_5()
+	]);
 
 	$effect(() => {
 		if (isVisible) {
@@ -117,10 +118,10 @@
 			class="mb-1 text-center font-serif text-[22px] font-normal text-ink sm:text-[28px]"
 			style="font-family: 'Cinzel Decorative', serif;"
 		>
-			The <em class="text-gold not-italic">Council</em>
+			{@html m.home_title()}
 		</div>
 		<div class="mb-3 text-center text-[11px] text-ink-3 italic sm:mb-4 sm:text-xs">
-			A chamber of minds. One question. Many voices.
+			{m.home_subtitle()}
 		</div>
 		<div
 			class="mb-[14px] text-center text-xs tracking-[4px] text-gold-2 sm:mb-[18px] sm:text-sm sm:tracking-[6px]"
@@ -130,7 +131,7 @@
 
 		<!-- Prompt -->
 		<div class="mb-2 text-[11px] font-medium tracking-[0.1em] text-ink-3 uppercase">
-			Your question
+			{m.home_your_question()}
 		</div>
 		<div class="relative mb-2.5 flex min-h-0 flex-1 flex-col" class:focused={isFocused}>
 			<span
@@ -165,9 +166,9 @@
 		<div
 			class="mb-2 flex items-center gap-2 text-[11px] font-medium tracking-[0.1em] text-ink-3 uppercase"
 		>
-			Council
+			{m.home_council_label()}
 			<span class="text-[10px] font-normal tracking-normal text-ink-3 normal-case italic">
-				drag to set speaking order
+				{m.home_drag_hint()}
 			</span>
 		</div>
 		<div class="relative mb-[18px]">
@@ -235,7 +236,7 @@
 							>
 								+
 							</button>
-							<div class="w-[60px] text-center text-[10px] text-ink-3">Add</div>
+							<div class="w-[60px] text-center text-[10px] text-ink-3">{m.home_add()}</div>
 						</div>
 					{/if}
 				{/each}
@@ -245,8 +246,8 @@
 		<div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
 			<div class="flex flex-wrap items-center gap-x-3 gap-y-1">
 				<span class="text-[11px] text-ink-3 italic sm:text-xs">
-					{seated.length} persona{seated.length !== 1 ? 's' : ''} seated{conflictedPositions.size
-						? ' · ⚡ conflicts detected'
+					{seated.length === 1 ? m.home_persona_seated({ count: seated.length }) : m.home_personas_seated({ count: seated.length })}{conflictedPositions.size
+						? m.home_conflicts_detected()
 						: ''}
 				</span>
 				<button
@@ -254,14 +255,14 @@
 					onclick={() => openPage('history')}
 				>
 					<IconHistory size={13} />
-					Past questions
+					{m.home_past_questions()}
 				</button>
 			</div>
 			<button
 				class="cursor-pointer rounded-lg border border-gold bg-gold px-5 py-2.5 text-sm tracking-wide text-parchment transition-all duration-200 hover:border-ink-2 hover:bg-ink-2 sm:px-[26px]"
 				onclick={handleConvene}
 			>
-				Convene the council →
+				{m.home_convene_cta()}
 			</button>
 		</div>
 	</div>

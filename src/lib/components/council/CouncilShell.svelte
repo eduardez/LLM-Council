@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import * as m from '$lib/paraglide/messages';
 	import HomePage from './HomePage.svelte';
 	import SessionPage from './SessionPage.svelte';
 	import CatalogPage from './CatalogPage.svelte';
@@ -189,17 +190,16 @@
 					class="mb-2 font-serif text-xl text-ink"
 					style="font-family: 'Cinzel Decorative', serif;"
 				>
-					Configure Your Council
+					{m.shell_configure_title()}
 				</div>
 				<p class="mb-5 text-sm leading-relaxed text-ink-3">
-					Choose an AI provider and enter your API key to start convening the council. Everything
-					stays in your browser.
+					{m.shell_configure_desc()}
 				</p>
 				<button
 					class="cursor-pointer rounded-lg border border-gold bg-gold px-6 py-2.5 font-serif text-sm tracking-wide text-parchment transition-all duration-200 hover:border-ink-2 hover:bg-ink-2"
 					onclick={() => openPage('config')}
 				>
-					Set up configuration →
+					{m.shell_configure_cta()}
 				</button>
 			</div>
 		</div>
@@ -212,7 +212,7 @@
 		class:pointer-events-auto={!!currentPage}
 		class:pointer-events-none={!currentPage}
 		role="button"
-		aria-label="Close subpage"
+		aria-label={m.shell_close_subpage()}
 		tabindex="-1"
 		onclick={closePage}
 		onkeydown={(e) => e.key === 'Enter' && closePage()}

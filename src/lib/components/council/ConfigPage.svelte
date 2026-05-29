@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { IconArrowLeft, IconRefresh } from '@tabler/icons-svelte';
 	import SearchableDropdown from '$lib/components/ui/SearchableDropdown.svelte';
+	import * as m from '$lib/paraglide/messages';
 
 	type Provider = 'openrouter' | 'openai' | 'anthropic' | 'google' | 'custom';
 
@@ -186,17 +187,17 @@
 				onclick={closePage}
 			>
 				<IconArrowLeft size={16} stroke={1.5} />
-				<span>Council</span>
+				<span>{m.config_back()}</span>
 			</button>
 			<div
 				class="font-serif text-lg font-normal text-ink sm:text-[21px]"
 				style="font-family: 'Cinzel Decorative', serif;"
 			>
-				Configuration
+				{m.config_title()}
 			</div>
 		</div>
 		<p class="mb-4 text-xs text-ink-3 italic">
-			Everything stays in your browser. Nothing reaches the server.
+			{m.config_subtitle()}
 		</p>
 
 		<div
@@ -204,14 +205,12 @@
 		>
 			<span class="mt-[1px] flex-shrink-0 text-[17px] text-gold">🔒</span>
 			<div class="text-xs leading-relaxed text-ink-3">
-				Your API key and all conversations are stored only in your browser's localStorage. Each
-				request goes directly to the configured endpoint — no Council server ever sees your token or
-				data.
+				{m.config_privacy()}
 			</div>
 		</div>
 
 		<div class="mb-3.5">
-			<label for="cfg-provider" class="mb-1 block text-xs font-medium text-ink-2">Provider</label>
+			<label for="cfg-provider" class="mb-1 block text-xs font-medium text-ink-2">{m.config_provider_label()}</label>
 			<SearchableDropdown
 				id="cfg-provider"
 				options={[
@@ -223,55 +222,55 @@
 				]}
 				value={provider}
 				onchange={(v) => handleProviderChange(v)}
-				placeholder="Select provider"
+				placeholder={m.config_select_provider()}
 			/>
 		</div>
 
 		<div class="mb-3.5">
-			<label for="cfg-ep" class="mb-1 block text-xs font-medium text-ink-2">API endpoint</label>
+			<label for="cfg-ep" class="mb-1 block text-xs font-medium text-ink-2">{m.config_endpoint_label()}</label>
 			<input
 				id="cfg-ep"
 				type="text"
-				placeholder="https://..."
+				placeholder={m.config_endpoint_placeholder()}
 				class="w-full rounded-md border border-parchment-3 bg-parchment-2 px-[11px] py-2 text-[13px] text-ink transition-colors duration-150 outline-none focus:border-gold-2"
 				bind:value={endpoint}
 			/>
 			<div class="mt-[3px] text-[11px] text-ink-3 italic">
-				Override to use a proxy, local model, or alternative provider.
+				{m.config_endpoint_hint()}
 			</div>
 		</div>
 
 		<div class="mb-3.5">
-			<label for="cfg-tk" class="mb-1 block text-xs font-medium text-ink-2">API token</label>
+			<label for="cfg-tk" class="mb-1 block text-xs font-medium text-ink-2">{m.config_token_label()}</label>
 			<input
 				id="cfg-tk"
 				type="password"
-				placeholder="sk-..."
+				placeholder={m.config_token_placeholder()}
 				class="w-full rounded-md border border-parchment-3 bg-parchment-2 px-[11px] py-2 text-[13px] text-ink transition-colors duration-150 outline-none focus:border-gold-2"
 				bind:value={token}
 			/>
 			<div class="mt-[3px] text-[11px] text-ink-3 italic">
-				Stored in localStorage, never sent to Council servers.
+				{m.config_token_hint()}
 			</div>
 		</div>
 		<div class="mb-3.5">
 			<div class="mb-1 flex items-center justify-between">
-				<label for="cfg-model" class="text-xs font-medium text-ink-2">Model</label>
+				<label for="cfg-model" class="text-xs font-medium text-ink-2">{m.config_model_label()}</label>
 				<button
 					class="flex cursor-pointer items-center gap-1 rounded px-1.5 py-0.5 text-[10px] text-ink-3 transition-colors hover:bg-parchment-3 hover:text-ink"
 					onclick={fetchModels}
 					disabled={isFetchingModels}
-					title="Refresh model list"
+					title={m.config_refresh_title()}
 				>
 					<IconRefresh size={12} stroke={1.5} class={isFetchingModels ? 'animate-spin' : ''} />
-					{isFetchingModels ? 'Fetching…' : 'Refresh'}
+					{isFetchingModels ? m.config_fetching() : m.config_refresh()}
 				</button>
 			</div>
 			{#if useCustomModel}
 				<input
 					id="cfg-model"
 					type="text"
-					placeholder="Enter model name..."
+					placeholder={m.config_enter_model()}
 					class="w-full rounded-md border border-parchment-3 bg-parchment-2 px-[11px] py-2 text-[13px] text-ink transition-colors duration-150 outline-none focus:border-gold-2"
 					bind:value={model}
 				/>
@@ -281,17 +280,17 @@
 					options={availableModels.map((m) => ({ value: m, label: m }))}
 					value={model}
 					onchange={(v) => (model = v)}
-					placeholder="Select model"
+					placeholder={m.config_select_model()}
 				/>
 			{/if}
 			{#if fetchModelsError}
-				<div class="mt-[3px] text-[11px] text-burgundy italic">{fetchModelsError}</div>
+				<div class="mt-[3px] text-[11px] text-burgundy italic">{m.config_fetch_error()}</div>
 			{/if}
 			<button
 				class="mt-1 cursor-pointer text-[11px] text-ink-3 italic underline transition-colors hover:text-ink"
 				onclick={toggleCustomModel}
 			>
-				{useCustomModel ? '← Back to list' : 'Or enter custom model…'}
+				{useCustomModel ? m.config_back_to_list() : m.config_enter_custom()}
 			</button>
 		</div>
 
@@ -300,10 +299,10 @@
 				class="cursor-pointer rounded-md border border-gold bg-gold px-5 py-2 font-serif text-[13px] text-parchment transition-all duration-150 hover:border-ink-2 hover:bg-ink-2"
 				onclick={saveConfig}
 			>
-				Save to browser
+				{m.config_save()}
 			</button>
 			{#if saveOk}
-				<span class="ml-2.5 text-xs text-sage italic">✓ Saved</span>
+				<span class="ml-2.5 text-xs text-sage italic">{m.config_saved()}</span>
 			{/if}
 		</div>
 	</div>
@@ -314,7 +313,7 @@
 			onclick={closePage}
 		>
 			<IconArrowLeft size={18} stroke={1.5} />
-			<span>Back to the Council</span>
+			<span>{m.config_cta()}</span>
 		</button>
 	</div>
 </div>

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { IconArrowLeft, IconTrash } from '@tabler/icons-svelte';
+	import * as m from '$lib/paraglide/messages';
 
 	interface SavedSession {
 		id: number;
@@ -50,9 +51,9 @@
 	function formatDate(ts: number): string {
 		const d = new Date(ts);
 		const diff = Date.now() - ts;
-		if (diff < 60000) return 'Just now';
-		if (diff < 3600000) return `${Math.floor(diff / 60000)}m ago`;
-		if (diff < 86400000) return `${Math.floor(diff / 3600000)}h ago`;
+		if (diff < 60000) return m.history_just_now();
+		if (diff < 3600000) return m.history_min_ago({ minutes: Math.floor(diff / 60000) });
+		if (diff < 86400000) return m.history_hour_ago({ hours: Math.floor(diff / 3600000) });
 		return d.toLocaleDateString();
 	}
 </script>
@@ -69,13 +70,13 @@
 				onclick={closePage}
 			>
 				<IconArrowLeft size={16} stroke={1.5} />
-				<span>Council</span>
+				<span>{m.history_back()}</span>
 			</button>
 			<div
 				class="font-serif text-lg font-normal text-ink sm:text-[21px]"
 				style="font-family: 'Cinzel Decorative', serif;"
 			>
-				Past questions
+				{m.history_title()}
 			</div>
 		</div>
 
@@ -104,13 +105,13 @@
 				onclick={clearHistory}
 			>
 				<IconTrash size={14} stroke={1.5} />
-				Clear all history
+				{m.history_clear_all()}
 			</button>
 		{:else}
 			<div class="mt-8 text-center">
 				<div class="mb-2 text-3xl text-ink-3">📜</div>
-				<div class="text-sm text-ink-3 italic">No past questions yet.</div>
-				<div class="mt-1 text-xs text-ink-3">Questions asked to the Council will appear here.</div>
+				<div class="text-sm text-ink-3 italic">{m.history_empty()}</div>
+				<div class="mt-1 text-xs text-ink-3">{m.history_empty_desc()}</div>
 			</div>
 		{/if}
 	</div>
@@ -121,7 +122,7 @@
 			onclick={closePage}
 		>
 			<IconArrowLeft size={18} stroke={1.5} />
-			<span>Back to the Council</span>
+			<span>{m.history_return()}</span>
 		</button>
 	</div>
 </div>

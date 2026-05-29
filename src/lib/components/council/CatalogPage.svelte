@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { IconArrowLeft } from '@tabler/icons-svelte';
+	import * as m from '$lib/paraglide/messages';
 
 	interface Persona {
 		id: number;
@@ -46,18 +47,18 @@
 				onclick={closePage}
 			>
 				<IconArrowLeft size={16} stroke={1.5} />
-				<span>Council</span>
+				<span>{m.catalog_back()}</span>
 			</button>
 			<div class="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center sm:gap-3">
 				<div
 					class="font-serif text-lg font-normal text-ink sm:text-[21px]"
 					style="font-family: 'Cinzel Decorative', serif;"
 				>
-					Persona catalogue
+					{m.catalog_title()}
 				</div>
 				<input
 					type="text"
-					placeholder="Search…"
+					placeholder={m.catalog_search()}
 					class="w-full rounded-md border border-parchment-3 bg-parchment-2 px-3 py-[7px] text-xs text-ink transition-colors duration-150 outline-none placeholder:text-ink-3 focus:border-gold-2 sm:w-[155px]"
 					bind:value={searchQuery}
 				/>
@@ -108,7 +109,7 @@
 		</div>
 
 		<div class="mt-4 flex items-center justify-between">
-			<span class="text-xs text-ink-3 italic">{seated.length} of 12 seats filled</span>
+			<span class="text-xs text-ink-3 italic">{m.catalog_seats_filled({ count: seated.length })}</span>
 		</div>
 	</div>
 
@@ -118,7 +119,7 @@
 			onclick={closePage}
 		>
 			<IconArrowLeft size={18} stroke={1.5} />
-			<span>Return to the round</span>
+			<span>{m.catalog_return()}</span>
 		</button>
 	</div>
 </div>

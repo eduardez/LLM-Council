@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { IconArrowLeft, IconExternalLink } from '@tabler/icons-svelte';
+	import * as m from '$lib/paraglide/messages';
 
 	interface Props {
 		isVisible: boolean;
@@ -10,14 +11,14 @@
 
 	const links = [
 		{
-			label: 'Forgejo (primary)',
+			label: m.links_forgejo_label(),
 			url: 'https://git.eduard3v.com/EduarD3V/LLM-Council',
-			desc: 'Self-hosted source of truth'
+			desc: m.links_forgejo_desc()
 		},
 		{
-			label: 'GitHub (mirror)',
+			label: m.links_github_label(),
 			url: 'https://github.com/eduardez/LLM-Council',
-			desc: 'Public mirror and issues'
+			desc: m.links_github_desc()
 		}
 	];
 </script>
@@ -34,13 +35,13 @@
 				onclick={closePage}
 			>
 				<IconArrowLeft size={16} stroke={1.5} />
-				<span>Council</span>
+				<span>{m.lang_back()}</span>
 			</button>
 			<div
 				class="font-serif text-lg font-normal text-ink sm:text-[21px]"
 				style="font-family: 'Cinzel Decorative', serif;"
 			>
-				Links
+				{m.links_title()}
 			</div>
 		</div>
 
@@ -70,7 +71,7 @@
 			onclick={closePage}
 		>
 			<IconArrowLeft size={18} stroke={1.5} />
-			<span>Return to council</span>
+			<span>{m.links_return()}</span>
 		</button>
 	</div>
 </div>

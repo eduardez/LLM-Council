@@ -3,6 +3,7 @@
 	import type { CouncilConfig, Persona as AIPersona, Speech, Review } from '$lib/ai/council';
 	import { IconArrowLeft, IconCopy } from '@tabler/icons-svelte';
 	import Markdown from '$lib/components/ui/Markdown.svelte';
+	import * as m from '$lib/paraglide/messages';
 
 	interface Persona {
 		id: number;
@@ -317,13 +318,13 @@
 					onclick={closePage}
 				>
 					<IconArrowLeft size={16} stroke={1.5} />
-					<span>Council</span>
+					<span>{m.session_back()}</span>
 				</button>
 				<div
 					class="truncate font-serif text-sm text-ink sm:text-base"
 					style="font-family: 'Cinzel Decorative', serif;"
 				>
-					Council in session
+					{m.session_title()}
 				</div>
 			</div>
 			<div
@@ -375,19 +376,19 @@
 								class:bg-[#e8f0e8]={speech.speech !== '' && !speech.streaming}
 								class:text-sage={speech.speech !== '' && !speech.streaming}
 							>
-								{#if speech.streaming}
-									Speaking…
-								{:else if speech.speech === ''}
-									Waiting
-								{:else}
-									Done
-								{/if}
+							{#if speech.streaming}
+								{m.session_speaking()}
+							{:else if speech.speech === ''}
+								{m.session_waiting()}
+							{:else}
+								{m.session_done()}
+							{/if}
 							</span>
 							{#if speech.speech !== '' && !speech.streaming}
 								<button
 									class="flex cursor-pointer items-center justify-center rounded-md p-1 text-ink-3 transition-all duration-150 hover:bg-parchment-3 hover:text-ink"
 									onclick={() => copyText(speech.speech)}
-									title="Copy speech"
+									title={m.session_copy_speech()}
 								>
 									<IconCopy size={14} stroke={1.5} />
 								</button>
@@ -424,7 +425,7 @@
 		<!-- Deliberating -->
 		{#if stage === 'reviews' && reviews.some((r) => r.streaming)}
 			<div class="mb-3 rounded-lg border border-parchment-3 bg-parchment p-[13px] text-center">
-				<div class="font-serif text-[13px] text-ink-3 italic">Council deliberating…</div>
+				<div class="font-serif text-[13px] text-ink-3 italic">{m.session_deliberating()}</div>
 			</div>
 		{/if}
 
@@ -432,7 +433,7 @@
 		{#if (stage === 'reviews' || stage === 'synthesis' || stage === 'complete') && reviews.length > 0}
 			<div class="rounded-lg border border-parchment-3 bg-parchment p-[13px]">
 				<div class="mb-2.5 font-serif text-[13px] text-ink">
-					The assembly has deliberated — peer rankings
+					{m.session_peer_rankings()}
 				</div>
 				{#each voteData as vote, i (i)}
 					<div class="relative mb-[9px] flex items-center gap-1.5 sm:gap-2.5">
@@ -467,21 +468,21 @@
 						📖
 					</div>
 					<div>
-						<div class="font-serif text-[13px] text-ink">The Council Scribe</div>
-						<div class="text-[11px] text-ink-3">Unified synthesis of all voices</div>
+						<div class="font-serif text-[13px] text-ink">{m.session_synthesis_title()}</div>
+						<div class="text-[11px] text-ink-3">{m.session_synthesis_subtitle()}</div>
 					</div>
 					<div class="ml-auto flex items-center gap-1">
 						{#if stage === 'complete' || displayedSynthesis !== ''}
 							<button
 								class="flex cursor-pointer items-center justify-center rounded-md p-1 text-ink-3 transition-all duration-150 hover:bg-gold-3 hover:text-gold"
 								onclick={() => copyText(displayedSynthesis)}
-								title="Copy synthesis"
+								title={m.session_copy_synthesis()}
 							>
 								<IconCopy size={14} stroke={1.5} />
 							</button>
 						{/if}
 						<span class="rounded-[10px] bg-gold-3 px-2 py-[2px] text-[10px] text-gold italic"
-							>Final word</span
+							>{m.session_final_word()}</span
 						>
 					</div>
 				</div>
@@ -503,7 +504,7 @@
 			onclick={closePage}
 		>
 			<IconArrowLeft size={18} stroke={1.5} />
-			<span>Conclude audience</span>
+			<span>{m.session_conclude()}</span>
 		</button>
 	</div>
 </div>

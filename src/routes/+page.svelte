@@ -1,13 +1,14 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import * as m from '$lib/paraglide/messages';
 	import CouncilShell from '$lib/components/council/CouncilShell.svelte';
 
 	let showSplash = $state(true);
 	let phraseIdx = $state(0);
 	let splashDone = $state(false);
 
-	const phrases = ['Ask anything…', 'Welcome back', 'Loading...'];
+	const phrases = $derived([m.splash_ask(), m.splash_welcome(), m.splash_loading()]);
 
 	onMount(() => {
 		const t1 = setTimeout(() => {
@@ -40,7 +41,7 @@
 				class="mb-4 text-center font-serif text-3xl tracking-widest text-gold sm:mb-6 sm:text-5xl"
 				style="font-family: 'Cinzel Decorative', serif;"
 			>
-				✦ The Council
+				{m.splash_the_council()}
 			</div>
 			<div
 				class="mb-4 h-px w-16 bg-gradient-to-r from-transparent via-gold/40 to-transparent sm:mb-6 sm:w-20"

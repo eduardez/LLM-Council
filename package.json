@@ -50,6 +50,7 @@
 		"ai": "^6.0.191",
 		"dompurify": "^3.4.7",
 		"marked": "^18.0.4",
+		"mixpanel-browser": "^2.80.0",
 		"svelte-hint": "^1.1.0"
 	}
 }

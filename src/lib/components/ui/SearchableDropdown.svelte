@@ -1,8 +1,10 @@
 <script lang="ts">
+	import * as m from '$lib/paraglide/messages';
+
 	let {
 		options = [],
 		value = $bindable(''),
-		placeholder = 'Select...',
+		placeholder = m.ui_select_placeholder(),
 		onchange = (_v: string) => {}
 	}: {
 		options: Array<{ value: string; label: string }>;
@@ -154,13 +156,13 @@
 				bind:this={inputRef}
 				type="text"
 				class="w-full border-b border-parchment-3 bg-transparent px-3 py-2 text-xs outline-none"
-				placeholder="Search..."
+				placeholder={m.ui_search_placeholder()}
 				bind:value={filterText}
 				role="searchbox"
 			/>
 			<div class="max-h-[200px] overflow-y-auto">
 				{#if filteredOptions.length === 0}
-					<div class="px-3 py-1.5 text-xs text-ink-3 italic">No options found</div>
+					<div class="px-3 py-1.5 text-xs text-ink-3 italic">{m.ui_no_options()}</div>
 				{:else}
 					{#each filteredOptions as option, i (option.value)}
 						<div

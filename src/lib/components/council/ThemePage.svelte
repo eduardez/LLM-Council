@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { IconArrowLeft, IconCheck } from '@tabler/icons-svelte';
+	import * as m from '$lib/paraglide/messages';
 
 	interface Props {
 		isVisible: boolean;
@@ -89,13 +90,13 @@
 				onclick={closePage}
 			>
 				<IconArrowLeft size={16} stroke={1.5} />
-				<span>Council</span>
+				<span>{m.theme_back()}</span>
 			</button>
 			<div
 				class="font-serif text-lg font-normal text-ink sm:text-[21px]"
 				style="font-family: 'Cinzel Decorative', serif;"
 			>
-				Theme
+{m.theme_title()}
 			</div>
 		</div>
 
@@ -132,7 +133,7 @@
 			onclick={closePage}
 		>
 			<IconArrowLeft size={18} stroke={1.5} />
-			<span>Back to the Council</span>
+			<span>{m.config_cta()}</span>
 		</button>
 	</div>
 </div>

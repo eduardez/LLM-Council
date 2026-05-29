@@ -4,6 +4,7 @@
 	import { page } from '$app/state';
 	import { locales, localizeHref } from '$lib/paraglide/runtime';
 	import './layout.css';
+	import * as m from '$lib/paraglide/messages';
 	import favicon from '$lib/assets/favicon.svg';
 	import { SvelteToast } from '@zerodevx/svelte-toast';
 
@@ -11,7 +12,7 @@
 </script>
 
 <svelte:head>
-	<title>LLM Council</title>
+	<title>{m.layout_title()}</title>
 	<link rel="icon" href={favicon} />
 </svelte:head>
 {@render children()}

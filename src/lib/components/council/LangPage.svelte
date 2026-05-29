@@ -1,4 +1,5 @@
 <script lang="ts">
+	import * as m from '$lib/paraglide/messages';
 	import { IconArrowLeft, IconCheck } from '@tabler/icons-svelte';
 	import { locales, setLocale, getLocale } from '$lib/paraglide/runtime';
 
@@ -11,12 +12,18 @@
 
 	const langNames: Record<string, string> = {
 		en: 'English',
-		es: 'Español'
+		es: 'Español',
+		fr: 'Français',
+		pt: 'Português',
+		zh: '中文'
 	};
 
 	const langFlags: Record<string, string> = {
 		en: '🇬🇧',
-		es: '🇪🇸'
+		es: '🇪🇸',
+		fr: '🇫🇷',
+		pt: '🇧🇷',
+		zh: '🇨🇳'
 	};
 
 	let currentLang = $state(getLocale());
@@ -34,13 +41,13 @@
 				onclick={closePage}
 			>
 				<IconArrowLeft size={16} stroke={1.5} />
-				<span>Council</span>
+				<span>{m.lang_back()}</span>
 			</button>
 			<div
 				class="font-serif text-lg font-normal text-ink sm:text-[21px]"
 				style="font-family: 'Cinzel Decorative', serif;"
 			>
-				Language
+				{m.lang_title()}
 			</div>
 		</div>
 
@@ -77,7 +84,7 @@
 			onclick={closePage}
 		>
 			<IconArrowLeft size={18} stroke={1.5} />
-			<span>Return to council</span>
+			<span>{m.links_return()}</span>
 		</button>
 	</div>
 </div>

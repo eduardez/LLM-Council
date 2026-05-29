@@ -1,4 +1,5 @@
 <script lang="ts">
+	import * as m from '$lib/paraglide/messages';
 	import {
 		IconLink,
 		IconLanguage,
@@ -41,7 +42,7 @@
 			<button
 				class="flex w-full cursor-pointer justify-center py-3"
 				onclick={handleMainBtn}
-				aria-label="Toggle menu"
+				aria-label={m.nav_toggle_menu()}
 			>
 				<div
 					class="h-1 w-12 rounded-full bg-gold/30 transition-all duration-300 hover:w-14 hover:bg-gold/60"
@@ -59,7 +60,7 @@
 					<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-gold-3 text-gold">
 						<IconMasksTheater size={16} stroke={1.5} />
 					</div>
-					<span class="nav-label text-[10px] font-medium text-ink sm:text-[11px]">Members</span>
+					<span class="nav-label text-[10px] font-medium text-ink sm:text-[11px]">{m.nav_members()}</span>
 				</button>
 
 				<!-- Config -->
@@ -72,7 +73,7 @@
 					>
 						<IconSettings size={16} stroke={1.5} />
 					</div>
-					<span class="nav-label text-[10px] font-medium text-ink sm:text-[11px]">Config</span>
+					<span class="nav-label text-[10px] font-medium text-ink sm:text-[11px]">{m.nav_config()}</span>
 				</button>
 
 				<!-- Language -->
@@ -85,7 +86,7 @@
 					>
 						<IconLanguage size={16} stroke={1.5} />
 					</div>
-					<span class="nav-label text-[10px] font-medium text-ink sm:text-[11px]">Lang</span>
+					<span class="nav-label text-[10px] font-medium text-ink sm:text-[11px]">{m.nav_lang()}</span>
 				</button>
 
 				<!-- Theme -->
@@ -96,7 +97,7 @@
 					<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-gold-3 text-gold">
 						<IconSun size={16} stroke={1.5} />
 					</div>
-					<span class="nav-label text-[10px] font-medium text-ink sm:text-[11px]">Theme</span>
+					<span class="nav-label text-[10px] font-medium text-ink sm:text-[11px]">{m.nav_theme()}</span>
 				</button>
 
 				<!-- History -->
@@ -107,7 +108,7 @@
 					<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-gold-3 text-gold">
 						<IconHistory size={16} stroke={1.5} />
 					</div>
-					<span class="nav-label text-[10px] font-medium text-ink sm:text-[11px]">History</span>
+					<span class="nav-label text-[10px] font-medium text-ink sm:text-[11px]">{m.nav_history()}</span>
 				</button>
 
 				<!-- Links -->
@@ -118,7 +119,7 @@
 					<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-sage/10 text-sage">
 						<IconLink size={16} stroke={1.5} />
 					</div>
-					<span class="nav-label text-[10px] font-medium text-ink sm:text-[11px]">Links</span>
+					<span class="nav-label text-[10px] font-medium text-ink sm:text-[11px]">{m.nav_links()}</span>
 				</button>
 			</div>
 		</div>
