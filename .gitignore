@@ -26,7 +26,10 @@ src/lib/paraglide
 project.inlang/cache/
 # SQLite
 *.db
+# Drizzle
+drizzle/
 .opencode/opencode.json
+.opencode/svelte.json
 *.md
 !README.md
 !GUIDE.md

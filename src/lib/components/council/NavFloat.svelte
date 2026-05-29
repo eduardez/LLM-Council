@@ -1,6 +1,6 @@
 <script lang="ts">
 	import {
-		IconKey,
+		IconLink,
 		IconLanguage,
 		IconMasksTheater,
 		IconSettings,
@@ -17,13 +17,6 @@
 
 	let { currentPage, menuOpen, handleMainBtn, openPage }: Props = $props();
 	let peekHover = $state(false);
-
-	let toast = $state<string | null>(null);
-
-	function showToast(msg: string) {
-		toast = msg;
-		setTimeout(() => (toast = null), 2200);
-	}
 </script>
 
 <div class="absolute inset-x-0 bottom-0 z-10" class:pointer-events-none={currentPage}>
@@ -117,28 +110,20 @@
 					<span class="nav-label text-[10px] font-medium text-ink sm:text-[11px]">History</span>
 				</button>
 
-				<!-- Sign in -->
+				<!-- Links -->
 				<button
 					class="nav-btn flex cursor-pointer flex-col items-center gap-1 rounded-lg px-2 py-2 transition-colors duration-150 hover:bg-parchment-3 sm:flex-row sm:gap-2 sm:px-3"
-					onclick={() =>
-						showToast('Sign-in is not available in this static build. Config is stored locally.')}
+					onclick={() => openPage('links')}
 				>
 					<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-sage/10 text-sage">
-						<IconKey size={16} stroke={1.5} />
+						<IconLink size={16} stroke={1.5} />
 					</div>
-					<span class="nav-label text-[10px] font-medium text-ink sm:text-[11px]">Sign in</span>
+					<span class="nav-label text-[10px] font-medium text-ink sm:text-[11px]">Links</span>
 				</button>
 			</div>
 		</div>
 	</div>
 
-	{#if toast}
-		<div
-			class="absolute top-1/2 left-1/2 z-20 -translate-x-1/2 -translate-y-1/2 rounded-lg border border-gold-2 bg-parchment px-5 py-2.5 shadow-xl transition-all duration-300"
-		>
-			<span class="text-sm text-ink-2">{toast}</span>
-		</div>
-	{/if}
 </div>
 
 <style>

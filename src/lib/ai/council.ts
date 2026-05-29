@@ -43,7 +43,7 @@ export function createProvider(config: CouncilConfig): LanguageModel {
 				apiKey,
 				baseURL,
 				headers: {
-					'HTTP-Referer': 'https://llm-council.app',
+					'HTTP-Referer': 'https://council.eduard3v.com',
 					'X-Title': 'LLM Council',
 					...headers
 				}

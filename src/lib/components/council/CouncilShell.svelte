@@ -7,6 +7,7 @@
 	import LangPage from './LangPage.svelte';
 	import ThemePage from './ThemePage.svelte';
 	import HistoryPage from './HistoryPage.svelte';
+	import LinksPage from './LinksPage.svelte';
 	import NavFloat from './NavFloat.svelte';
 	import { personas as personaData } from '$lib/data/personas';
 
@@ -236,6 +237,8 @@
 	<ThemePage isVisible={currentPage === 'theme'} {closePage} />
 
 	<HistoryPage {restoreSession} isVisible={currentPage === 'history'} {closePage} />
+
+	<LinksPage isVisible={currentPage === 'links'} {closePage} />
 
 	<NavFloat {currentPage} {menuOpen} {handleMainBtn} {openPage} />
 </div>
