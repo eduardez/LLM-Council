@@ -175,13 +175,13 @@
 			<div class="flex min-h-[80px] flex-nowrap items-end gap-2 overflow-x-auto pt-5 pb-1">
 				{#each slots as idx, pos (pos)}
 					{#if idx !== null}
-						{@const m = personas.find((p) => p.id === idx)}
-						{#if m}
+						{@const persona = personas.find((p) => p.id === idx)}
+						{#if persona}
 							<div
 								class="seat relative flex cursor-grab flex-col items-center gap-1 transition-transform duration-150 select-none"
 								role="button"
 								tabindex="0"
-								aria-label="Drag to reorder {m.name}"
+								aria-label={m.home_drag_to_reorder() + persona.name}
 								draggable="true"
 								data-pos={pos}
 								ondragstart={(e) => handleDragStart(e, pos)}
@@ -194,7 +194,7 @@
 									class:border-gold-2={true}
 									class:bg-gold-3={true}
 								>
-									{m.glyph}
+									{persona.glyph}
 									<span
 										class="absolute -top-[6px] -right-[6px] flex h-[18px] w-[18px] items-center justify-center rounded-full bg-gold font-serif text-[10px] text-parchment"
 									>
@@ -204,7 +204,7 @@
 								<div
 									class="w-[60px] overflow-hidden text-center text-[10px] text-ellipsis whitespace-nowrap text-ink-2"
 								>
-									{m.name.replace('The ', '')}
+									{persona.name.replace('The ', '')}
 								</div>
 								{#if conflictedPositions.has(pos)}
 									<div
@@ -219,9 +219,9 @@
 									style="transform-origin: bottom center;"
 								>
 									<div class="mb-1 font-serif text-xs text-ink">
-										{m.name}
+										{persona.name}
 									</div>
-									<div class="text-[11px] leading-relaxed text-ink-3 italic">{m.quote}</div>
+									<div class="text-[11px] leading-relaxed text-ink-3 italic">{persona.quote}</div>
 									<div
 										class="absolute -bottom-[5px] left-1/2 h-2 w-2 -translate-x-1/2 rotate-45 border-r border-b border-gold-2 bg-parchment"
 									></div>

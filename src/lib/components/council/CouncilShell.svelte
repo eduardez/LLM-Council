@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import * as m from '$lib/paraglide/messages';
+	import { page } from '$app/state';
 	import HomePage from './HomePage.svelte';
 	import SessionPage from './SessionPage.svelte';
 	import CatalogPage from './CatalogPage.svelte';
@@ -14,7 +15,24 @@
 
 	let { splashDone = false }: { splashDone?: boolean } = $props();
 
-	let personas = $state(personaData);
+	function personaMsg(id: number, field: 'name' | 'role' | 'tag' | 'quote'): string {
+		const key = `persona_${id}_${field}`;
+		const fn = (m as unknown as Record<string, () => string>)[key];
+		return fn?.() ?? '';
+	}
+
+	const personas = $derived(
+		personaData.map((p) => {
+			void page.url.pathname;
+			return {
+				...p,
+				name: personaMsg(p.id, 'name'),
+				role: personaMsg(p.id, 'role'),
+				tag: personaMsg(p.id, 'tag'),
+				quote: personaMsg(p.id, 'quote')
+			};
+		})
+	);
 	let seated = $state<number[]>([0, 1, 2]);
 	let currentPage = $state<string | null>(null);
 	let menuOpen = $state(false);
