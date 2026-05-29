@@ -7,6 +7,7 @@
 	import * as m from '$lib/paraglide/messages';
 	import favicon from '$lib/assets/favicon.svg';
 	import { SvelteToast } from '@zerodevx/svelte-toast';
+	import CookieConsent from '$lib/components/CookieConsent.svelte';
 
 	let { children } = $props();
 </script>
@@ -17,6 +18,7 @@
 </svelte:head>
 {@render children()}
 <SvelteToast />
+<CookieConsent />
 
 <div style="display:none">
 	{#each locales as locale (locale)}
