@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { initMixpanel } from '$lib/analytics';
 
 	const STORAGE_KEY = 'council_consent';
 
@@ -9,16 +8,13 @@
 	onMount(() => {
 		if (typeof localStorage === 'undefined') return;
 		const stored = localStorage.getItem(STORAGE_KEY);
-		if (stored === 'accepted') {
-			initMixpanel();
-		} else if (!stored) {
+		if (!stored) {
 			visible = true;
 		}
 	});
 
 	function accept() {
 		localStorage.setItem(STORAGE_KEY, 'accepted');
-		initMixpanel();
 		visible = false;
 	}
 
