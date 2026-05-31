@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://council.eduard3v.com</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://council.eduard3v.com" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://council.eduard3v.com/es" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://council.eduard3v.com/fr" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://council.eduard3v.com/pt" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://council.eduard3v.com/zh" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://council.eduard3v.com" />
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>

@@ -376,13 +376,13 @@
 								class:bg-[#e8f0e8]={speech.speech !== '' && !speech.streaming}
 								class:text-sage={speech.speech !== '' && !speech.streaming}
 							>
-							{#if speech.streaming}
-								{m.session_speaking()}
-							{:else if speech.speech === ''}
-								{m.session_waiting()}
-							{:else}
-								{m.session_done()}
-							{/if}
+								{#if speech.streaming}
+									{m.session_speaking()}
+								{:else if speech.speech === ''}
+									{m.session_waiting()}
+								{:else}
+									{m.session_done()}
+								{/if}
 							</span>
 							{#if speech.speech !== '' && !speech.streaming}
 								<button

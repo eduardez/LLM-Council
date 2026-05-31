@@ -109,7 +109,9 @@
 		</div>
 
 		<div class="mt-4 flex items-center justify-between">
-			<span class="text-xs text-ink-3 italic">{m.catalog_seats_filled({ count: seated.length })}</span>
+			<span class="text-xs text-ink-3 italic"
+				>{m.catalog_seats_filled({ count: seated.length })}</span
+			>
 		</div>
 	</div>
 

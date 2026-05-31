@@ -60,7 +60,9 @@
 					<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-gold-3 text-gold">
 						<IconMasksTheater size={16} stroke={1.5} />
 					</div>
-					<span class="nav-label text-[10px] font-medium text-ink sm:text-[11px]">{m.nav_members()}</span>
+					<span class="nav-label text-[10px] font-medium text-ink sm:text-[11px]"
+						>{m.nav_members()}</span
+					>
 				</button>
 
 				<!-- Config -->
@@ -73,7 +75,9 @@
 					>
 						<IconSettings size={16} stroke={1.5} />
 					</div>
-					<span class="nav-label text-[10px] font-medium text-ink sm:text-[11px]">{m.nav_config()}</span>
+					<span class="nav-label text-[10px] font-medium text-ink sm:text-[11px]"
+						>{m.nav_config()}</span
+					>
 				</button>
 
 				<!-- Language -->
@@ -86,7 +90,9 @@
 					>
 						<IconLanguage size={16} stroke={1.5} />
 					</div>
-					<span class="nav-label text-[10px] font-medium text-ink sm:text-[11px]">{m.nav_lang()}</span>
+					<span class="nav-label text-[10px] font-medium text-ink sm:text-[11px]"
+						>{m.nav_lang()}</span
+					>
 				</button>
 
 				<!-- Theme -->
@@ -97,7 +103,9 @@
 					<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-gold-3 text-gold">
 						<IconSun size={16} stroke={1.5} />
 					</div>
-					<span class="nav-label text-[10px] font-medium text-ink sm:text-[11px]">{m.nav_theme()}</span>
+					<span class="nav-label text-[10px] font-medium text-ink sm:text-[11px]"
+						>{m.nav_theme()}</span
+					>
 				</button>
 
 				<!-- History -->
@@ -108,7 +116,9 @@
 					<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-gold-3 text-gold">
 						<IconHistory size={16} stroke={1.5} />
 					</div>
-					<span class="nav-label text-[10px] font-medium text-ink sm:text-[11px]">{m.nav_history()}</span>
+					<span class="nav-label text-[10px] font-medium text-ink sm:text-[11px]"
+						>{m.nav_history()}</span
+					>
 				</button>
 
 				<!-- Links -->
@@ -119,12 +129,13 @@
 					<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-sage/10 text-sage">
 						<IconLink size={16} stroke={1.5} />
 					</div>
-					<span class="nav-label text-[10px] font-medium text-ink sm:text-[11px]">{m.nav_links()}</span>
+					<span class="nav-label text-[10px] font-medium text-ink sm:text-[11px]"
+						>{m.nav_links()}</span
+					>
 				</button>
 			</div>
 		</div>
 	</div>
-
 </div>
 
 <style>

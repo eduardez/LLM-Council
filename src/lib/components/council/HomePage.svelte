@@ -114,15 +114,15 @@
 
 <div class="absolute inset-0 z-[1] flex flex-col overflow-y-auto bg-parchment pb-24">
 	<div class="flex flex-1 flex-col px-4 pt-7 pb-4 sm:px-7">
-		<div
+		<h1
 			class="mb-1 text-center font-serif text-[22px] font-normal text-ink sm:text-[28px]"
 			style="font-family: 'Cinzel Decorative', serif;"
 		>
 			{@html m.home_title()}
-		</div>
-		<div class="mb-3 text-center text-[11px] text-ink-3 italic sm:mb-4 sm:text-xs">
+		</h1>
+		<h2 class="mb-3 text-center text-[11px] text-ink-3 italic sm:mb-4 sm:text-xs">
 			{m.home_subtitle()}
-		</div>
+		</h2>
 		<div
 			class="mb-[14px] text-center text-xs tracking-[4px] text-gold-2 sm:mb-[18px] sm:text-sm sm:tracking-[6px]"
 		>
@@ -130,9 +130,9 @@
 		</div>
 
 		<!-- Prompt -->
-		<div class="mb-2 text-[11px] font-medium tracking-[0.1em] text-ink-3 uppercase">
+		<h3 class="mb-2 text-[11px] font-medium tracking-[0.1em] text-ink-3 uppercase">
 			{m.home_your_question()}
-		</div>
+		</h3>
 		<div class="relative mb-2.5 flex min-h-0 flex-1 flex-col" class:focused={isFocused}>
 			<span
 				class="pointer-events-none absolute top-2.5 right-2.5 text-base text-ink-3 transition-opacity duration-200"
@@ -163,14 +163,14 @@
 		</div>
 
 		<!-- Seats -->
-		<div
+		<h3
 			class="mb-2 flex items-center gap-2 text-[11px] font-medium tracking-[0.1em] text-ink-3 uppercase"
 		>
 			{m.home_council_label()}
 			<span class="text-[10px] font-normal tracking-normal text-ink-3 normal-case italic">
 				{m.home_drag_hint()}
 			</span>
-		</div>
+		</h3>
 		<div class="relative mb-[18px]">
 			<div class="flex min-h-[80px] flex-nowrap items-end gap-2 overflow-x-auto pt-5 pb-1">
 				{#each slots as idx, pos (pos)}
@@ -246,7 +246,9 @@
 		<div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
 			<div class="flex flex-wrap items-center gap-x-3 gap-y-1">
 				<span class="text-[11px] text-ink-3 italic sm:text-xs">
-					{seated.length === 1 ? m.home_persona_seated({ count: seated.length }) : m.home_personas_seated({ count: seated.length })}{conflictedPositions.size
+					{seated.length === 1
+						? m.home_persona_seated({ count: seated.length })
+						: m.home_personas_seated({ count: seated.length })}{conflictedPositions.size
 						? m.home_conflicts_detected()
 						: ''}
 				</span>

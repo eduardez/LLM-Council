@@ -210,7 +210,9 @@
 		</div>
 
 		<div class="mb-3.5">
-			<label for="cfg-provider" class="mb-1 block text-xs font-medium text-ink-2">{m.config_provider_label()}</label>
+			<label for="cfg-provider" class="mb-1 block text-xs font-medium text-ink-2"
+				>{m.config_provider_label()}</label
+			>
 			<SearchableDropdown
 				id="cfg-provider"
 				options={[
@@ -227,7 +229,9 @@
 		</div>
 
 		<div class="mb-3.5">
-			<label for="cfg-ep" class="mb-1 block text-xs font-medium text-ink-2">{m.config_endpoint_label()}</label>
+			<label for="cfg-ep" class="mb-1 block text-xs font-medium text-ink-2"
+				>{m.config_endpoint_label()}</label
+			>
 			<input
 				id="cfg-ep"
 				type="text"
@@ -241,7 +245,9 @@
 		</div>
 
 		<div class="mb-3.5">
-			<label for="cfg-tk" class="mb-1 block text-xs font-medium text-ink-2">{m.config_token_label()}</label>
+			<label for="cfg-tk" class="mb-1 block text-xs font-medium text-ink-2"
+				>{m.config_token_label()}</label
+			>
 			<input
 				id="cfg-tk"
 				type="password"
@@ -255,7 +261,9 @@
 		</div>
 		<div class="mb-3.5">
 			<div class="mb-1 flex items-center justify-between">
-				<label for="cfg-model" class="text-xs font-medium text-ink-2">{m.config_model_label()}</label>
+				<label for="cfg-model" class="text-xs font-medium text-ink-2"
+					>{m.config_model_label()}</label
+				>
 				<button
 					class="flex cursor-pointer items-center gap-1 rounded px-1.5 py-0.5 text-[10px] text-ink-3 transition-colors hover:bg-parchment-3 hover:text-ink"
 					onclick={fetchModels}

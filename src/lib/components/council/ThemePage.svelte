@@ -96,7 +96,7 @@
 				class="font-serif text-lg font-normal text-ink sm:text-[21px]"
 				style="font-family: 'Cinzel Decorative', serif;"
 			>
-{m.theme_title()}
+				{m.theme_title()}
 			</div>
 		</div>
 

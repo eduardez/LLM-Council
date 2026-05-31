@@ -26,7 +26,7 @@
 
 {#if visible}
 	<div
-		class="fixed bottom-0 left-0 right-0 z-50 border-t border-parchment-4 bg-parchment px-4 py-3.5 shadow-2xl shadow-ink/10 sm:bottom-4 sm:left-auto sm:right-4 sm:max-w-sm sm:rounded-xl sm:border"
+		class="fixed right-0 bottom-0 left-0 z-50 border-t border-parchment-4 bg-parchment px-4 py-3.5 shadow-2xl shadow-ink/10 sm:right-4 sm:bottom-4 sm:left-auto sm:max-w-sm sm:rounded-xl sm:border"
 	>
 		<p class="mb-3 text-xs leading-relaxed text-ink-3">
 			This site uses Mixpanel to understand how the Council is used. No personal data is collected.

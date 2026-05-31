@@ -25,15 +25,15 @@ Open `http://localhost:5173`, configure an AI provider + API key under Config, p
 
 ## Commands
 
-| Command | Purpose |
-|---------|---------|
-| `bun install` | Install dependencies |
-| `bun run dev` | Start Vite dev server |
-| `bun run build` | Build static site to `build/` |
-| `bun run preview` | Preview production build |
-| `bun run check` | Typecheck (svelte-check) |
-| `bun run lint` | Prettier + ESLint |
-| `bun run format` | Prettier --write |
+| Command           | Purpose                       |
+| ----------------- | ----------------------------- |
+| `bun install`     | Install dependencies          |
+| `bun run dev`     | Start Vite dev server         |
+| `bun run build`   | Build static site to `build/` |
+| `bun run preview` | Preview production build      |
+| `bun run check`   | Typecheck (svelte-check)      |
+| `bun run lint`    | Prettier + ESLint             |
+| `bun run format`  | Prettier --write              |
 
 Run `bun run prepare` or `bun run dev` once after cloning to generate `.svelte-kit/` types.
 
@@ -52,16 +52,16 @@ Run `bun run prepare` or `bun run dev` once after cloning to generate `.svelte-k
 
 The app is a single-page application with client-side routing via a custom page state machine in `CouncilShell.svelte`:
 
-| Page | Component | Route key |
-|------|-----------|-----------|
-| Home | `HomePage.svelte` | (default) |
-| Session | `SessionPage.svelte` | `session` |
-| Member catalog | `CatalogPage.svelte` | `catalog` |
-| Provider config | `ConfigPage.svelte` | `config` |
-| Theme picker | `ThemePage.svelte` | `theme` |
-| Language | `LangPage.svelte` | `lang` |
-| History | `HistoryPage.svelte` | `history` |
-| Links | `LinksPage.svelte` | `links` |
+| Page            | Component            | Route key |
+| --------------- | -------------------- | --------- |
+| Home            | `HomePage.svelte`    | (default) |
+| Session         | `SessionPage.svelte` | `session` |
+| Member catalog  | `CatalogPage.svelte` | `catalog` |
+| Provider config | `ConfigPage.svelte`  | `config`  |
+| Theme picker    | `ThemePage.svelte`   | `theme`   |
+| Language        | `LangPage.svelte`    | `lang`    |
+| History         | `HistoryPage.svelte` | `history` |
+| Links           | `LinksPage.svelte`   | `links`   |
 
 AI provider abstraction lives in `src/lib/ai/council.ts` — supports 5 provider types via the AI SDK. Personas are defined in `src/lib/data/personas.ts` (see `GUIDE.md` in the same directory for prompt methodology).
 

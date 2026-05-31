@@ -14,6 +14,44 @@
 
 <svelte:head>
 	<title>{m.layout_title()}</title>
+	<meta
+		name="description"
+		content="Assemble a council of AI archetypes — pose a question and watch them debate, review, and synthesize a response. Multi-provider AI deliberation platform."
+	/>
+	<link rel="canonical" href="https://council.eduard3v.com" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://council.eduard3v.com" />
+	<meta property="og:title" content="LLM Council — AI Persona Deliberation Platform" />
+	<meta
+		property="og:description"
+		content="Assemble a council of AI archetypes — pose a question and watch them debate, review, and synthesize a response. Multi-provider AI deliberation platform."
+	/>
+	<meta property="og:image" content="https://council.eduard3v.com/favicon.svg" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content="LLM Council — AI Persona Deliberation Platform" />
+	<meta
+		name="twitter:description"
+		content="Assemble a council of AI archetypes — pose a question and watch them debate, review, and synthesize a response."
+	/>
+	<link rel="alternate" hreflang="x-default" href="https://council.eduard3v.com" />
+	<link rel="alternate" hreflang="en" href="https://council.eduard3v.com" />
+	<link rel="alternate" hreflang="es" href="https://council.eduard3v.com/es" />
+	<link rel="alternate" hreflang="fr" href="https://council.eduard3v.com/fr" />
+	<link rel="alternate" hreflang="pt" href="https://council.eduard3v.com/pt" />
+	<link rel="alternate" hreflang="zh" href="https://council.eduard3v.com/zh" />
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "WebApplication",
+			"name": "LLM Council",
+			"url": "https://council.eduard3v.com",
+			"description": "Assemble a council of AI archetypes \u2014 pose a question and watch them debate, review, and synthesize a response.",
+			"applicationCategory": "AI Application",
+			"operatingSystem": "All",
+			"browserRequirements": "Requires JavaScript",
+			"offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+		}
+	</script>
 	<link rel="icon" href={favicon} />
 	<script>
 		(function (e, c) {
@@ -54,9 +92,7 @@
 							};
 						}
 						for (
-							var a = {},
-								g = ['get_group'].concat(Array.prototype.slice.call(arguments, 0)),
-								m = 0;
+							var a = {}, g = ['get_group'].concat(Array.prototype.slice.call(arguments, 0)), m = 0;
 							m < n.length;
 							m++
 						)
@@ -73,15 +109,15 @@
 					'undefined' !== typeof MIXPANEL_CUSTOM_LIB_URL
 						? MIXPANEL_CUSTOM_LIB_URL
 						: 'file:' === e.location.protocol &&
-						    '//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js'.match(/^\/\//)
-						  ? 'https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js'
-						  : '//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js';
+							  '//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js'.match(/^\/\//)
+							? 'https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js'
+							: '//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js';
 				e = e.getElementsByTagName('script')[0];
 				e.parentNode.insertBefore(k, e);
 			}
 		})(document, window.mixpanel || []);
 
-		mixpanel.init('695b10f0cc23ab0266e16425fcd244cd', {
+		mixpanel.init(import.meta.env.PUBLIC_MIXPANEL_TOKEN || '695b10f0cc23ab0266e16425fcd244cd', {
 			autocapture: true,
 			record_sessions_percent: 0,
 			api_host: 'https://api-eu.mixpanel.com'
