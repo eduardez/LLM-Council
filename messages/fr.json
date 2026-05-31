@@ -88,6 +88,8 @@
 	"links_forgejo_desc": "Source de vérité auto-hébergée",
 	"links_github_label": "GitHub (miroir)",
 	"links_github_desc": "Miroir public et signalement de problèmes",
+	"links_tutorials_label": "Tutoriels",
+	"links_tutorials_desc": "Apprenez à utiliser le Conseil",
 	"links_return": "Retour au conseil",
 	"ui_select_placeholder": "Sélectionner...",
 	"ui_search_placeholder": "Rechercher...",

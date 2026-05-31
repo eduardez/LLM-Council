@@ -88,6 +88,8 @@
 	"links_forgejo_desc": "Fuente de verdad auto-alojada",
 	"links_github_label": "GitHub (espejo)",
 	"links_github_desc": "Espejo público y reporte de incidencias",
+	"links_tutorials_label": "Tutoriales",
+	"links_tutorials_desc": "Aprende a usar el Consejo",
 	"links_return": "Volver al consejo",
 	"ui_select_placeholder": "Seleccionar...",
 	"ui_search_placeholder": "Buscar...",

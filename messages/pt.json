@@ -88,6 +88,8 @@
 	"links_forgejo_desc": "Fonte de verdade auto-hospedada",
 	"links_github_label": "GitHub (espelho)",
 	"links_github_desc": "Espelho público e registro de issues",
+	"links_tutorials_label": "Tutoriais",
+	"links_tutorials_desc": "Aprenda a usar o Conselho",
 	"links_return": "Voltar ao conselho",
 	"ui_select_placeholder": "Selecionar...",
 	"ui_search_placeholder": "Pesquisar...",

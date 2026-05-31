@@ -37,12 +37,12 @@
 		transition:fade={{ duration: 800 }}
 	>
 		<div class="flex flex-col items-center">
-			<h1
+			<div
 				class="mb-4 text-center font-serif text-3xl tracking-widest text-gold sm:mb-6 sm:text-5xl"
 				style="font-family: 'Cinzel Decorative', serif;"
 			>
 				{m.splash_the_council()}
-			</h1>
+			</div>
 			<div
 				class="mb-4 h-px w-16 bg-gradient-to-r from-transparent via-gold/40 to-transparent sm:mb-6 sm:w-20"
 			></div>

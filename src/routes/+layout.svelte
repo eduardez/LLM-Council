@@ -16,23 +16,25 @@
 	<title>{m.layout_title()}</title>
 	<meta
 		name="description"
-		content="Assemble a council of AI archetypes — pose a question and watch them debate, review, and synthesize a response. Multi-provider AI deliberation platform."
+		content="Assemble a council of AI archetypes — pose a question and watch AI personas debate, review, and synthesize a response. Multi-provider AI deliberation tool supporting OpenAI, Anthropic, Google, and OpenRouter."
 	/>
 	<link rel="canonical" href="https://council.eduard3v.com" />
 	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="LLM Council" />
 	<meta property="og:url" content="https://council.eduard3v.com" />
 	<meta property="og:title" content="LLM Council — AI Persona Deliberation Platform" />
 	<meta
 		property="og:description"
-		content="Assemble a council of AI archetypes — pose a question and watch them debate, review, and synthesize a response. Multi-provider AI deliberation platform."
+		content="Assemble a council of AI archetypes — pose a question and watch AI personas debate, review, and synthesize a response. Try it free, no signup required."
 	/>
 	<meta property="og:image" content="https://council.eduard3v.com/favicon.svg" />
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:title" content="LLM Council — AI Persona Deliberation Platform" />
 	<meta
 		name="twitter:description"
-		content="Assemble a council of AI archetypes — pose a question and watch them debate, review, and synthesize a response."
+		content="Assemble a council of AI archetypes — pose a question and watch AI personas debate, review, and synthesize a response. Try it free."
 	/>
+	<meta name="theme-color" content="#fcf8f6" />
 	<link rel="alternate" hreflang="x-default" href="https://council.eduard3v.com" />
 	<link rel="alternate" hreflang="en" href="https://council.eduard3v.com" />
 	<link rel="alternate" hreflang="es" href="https://council.eduard3v.com/es" />
@@ -46,10 +48,15 @@
 			"name": "LLM Council",
 			"url": "https://council.eduard3v.com",
 			"description": "Assemble a council of AI archetypes \u2014 pose a question and watch them debate, review, and synthesize a response.",
-			"applicationCategory": "AI Application",
+			"applicationCategory": "AIApplication",
 			"operatingSystem": "All",
 			"browserRequirements": "Requires JavaScript",
-			"offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+			"offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+			"author": {
+				"@type": "Organization",
+				"name": "EduarD3V",
+				"url": "https://eduard3v.com"
+			}
 		}
 	</script>
 	<link rel="icon" href={favicon} />

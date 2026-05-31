@@ -10,7 +10,11 @@ const config = {
 	kit: {
 		adapter: adapter({
 			fallback: 'index.html'
-		})
+		}),
+		prerender: {
+			entries: ['/sitemap.xml', '/tutorials'],
+			handleUnseenRoutes: 'ignore'
+		}
 	},
 	preprocess: [mdsvex({ extensions: ['.svx', '.md'] })],
 	extensions: ['.svelte', '.svx', '.md']

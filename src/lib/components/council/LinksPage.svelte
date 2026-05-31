@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { IconArrowLeft, IconExternalLink } from '@tabler/icons-svelte';
 	import * as m from '$lib/paraglide/messages';
+	import { resolve } from '$app/paths';
 
 	interface Props {
 		isVisible: boolean;
@@ -9,7 +10,7 @@
 
 	let { isVisible, closePage }: Props = $props();
 
-	const links = [
+	const externalLinks = [
 		{
 			label: m.links_forgejo_label(),
 			url: 'https://git.eduard3v.com/EduarD3V/LLM-Council',
@@ -46,7 +47,18 @@
 		</div>
 
 		<div class="flex flex-col gap-2">
-			{#each links as link (link.url)}
+			<a
+				href={resolve('/tutorials')}
+				class="flex w-full items-center gap-3 rounded-lg border border-parchment-3 bg-parchment-2 px-4 py-3 text-left transition-all duration-150 hover:bg-parchment-3"
+			>
+				<div class="flex flex-col">
+					<span class="text-sm font-medium text-ink">{m.links_tutorials_label()}</span>
+					<span class="text-xs text-ink-3 italic">{m.links_tutorials_desc()}</span>
+				</div>
+			</a>
+
+			<!-- eslint-disable svelte/no-navigation-without-resolve -->
+			{#each externalLinks as link (link.url)}
 				<a
 					href={link.url}
 					target="_blank"
@@ -62,6 +74,7 @@
 					</span>
 				</a>
 			{/each}
+			<!-- eslint-enable svelte/no-navigation-without-resolve -->
 		</div>
 	</div>
 

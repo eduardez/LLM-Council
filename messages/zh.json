@@ -88,6 +88,8 @@
 	"links_forgejo_desc": "自托管的真实来源",
 	"links_github_label": "GitHub（镜像）",
 	"links_github_desc": "公共镜像和问题追踪",
+	"links_tutorials_label": "教程",
+	"links_tutorials_desc": "学习如何使用议事厅",
 	"links_return": "返回议事厅",
 	"ui_select_placeholder": "选择...",
 	"ui_search_placeholder": "搜索...",
