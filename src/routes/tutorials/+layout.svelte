@@ -13,13 +13,23 @@
 	style="font-family: var(--font-body);"
 >
 	<div class="flex items-center gap-2 border-b border-parchment-4 px-4 py-3 shrink-0">
-		<a
-			href={resolve(isTutorialPage ? '/tutorials' : '/')}
-			class="flex cursor-pointer items-center gap-1.5 rounded-md px-2 py-1 text-xs text-ink-3 no-underline transition-all duration-150 hover:bg-parchment-3 hover:text-ink"
-		>
-			<IconArrowLeft size={16} stroke={1.5} />
-			<span>{isTutorialPage ? 'Back to Tutorials' : 'Back to Council'}</span>
-		</a>
+		{#if isTutorialPage}
+			<a
+				href={resolve('/tutorials')}
+				class="flex cursor-pointer items-center gap-1.5 rounded-md px-2 py-1 text-xs text-ink-3 no-underline transition-all duration-150 hover:bg-parchment-3 hover:text-ink"
+			>
+				<IconArrowLeft size={16} stroke={1.5} />
+				<span>Back to Tutorials</span>
+			</a>
+		{:else}
+			<a
+				href={resolve('/')}
+				class="flex cursor-pointer items-center gap-1.5 rounded-md px-2 py-1 text-xs text-ink-3 no-underline transition-all duration-150 hover:bg-parchment-3 hover:text-ink"
+			>
+				<IconArrowLeft size={16} stroke={1.5} />
+				<span>Back to Council</span>
+			</a>
+		{/if}
 	</div>
 
 	<div class="flex-1 overflow-y-auto">

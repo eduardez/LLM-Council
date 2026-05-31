@@ -32,7 +32,7 @@
 				<article
 					class="group rounded-xl border border-parchment-4 bg-parchment p-5 transition-all duration-200 hover:border-gold-2 hover:shadow-md"
 				>
-					<a href={resolve(`/tutorials/${tutorial.slug}`)} class="block">
+					<a href={resolve('/tutorials') + '/' + tutorial.slug} class="block">
 						<h2 class="mb-2 font-serif text-lg text-ink transition-colors group-hover:text-gold">
 							{tutorial.title}
 						</h2>
