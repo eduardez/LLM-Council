@@ -195,11 +195,6 @@
 									class:bg-gold-3={true}
 								>
 									{persona.glyph}
-									<span
-										class="absolute -top-[6px] -right-[6px] flex h-[18px] w-[18px] items-center justify-center rounded-full bg-gold font-serif text-[10px] text-parchment"
-									>
-										{pos + 1}
-									</span>
 								</div>
 								<div
 									class="w-[60px] overflow-hidden text-center text-[10px] text-ellipsis whitespace-nowrap text-ink-2"
