@@ -12,7 +12,7 @@
 	class="tutorials-shell relative flex w-full max-w-6xl flex-col overflow-hidden bg-parchment text-[15px] leading-relaxed text-ink"
 	style="font-family: var(--font-body);"
 >
-	<div class="flex items-center gap-2 border-b border-parchment-4 px-4 py-3 shrink-0">
+	<div class="flex shrink-0 items-center gap-2 border-b border-parchment-4 px-4 py-3">
 		{#if isTutorialPage}
 			<a
 				href={resolve('/tutorials')}

@@ -218,20 +218,7 @@
 		display: inline;
 	}
 
-	/* Shine overlay */
-	.catalog-card::before {
-		content: '';
-		position: absolute;
-		inset: 0;
-		background: linear-gradient(
-			135deg,
-			color-mix(in srgb, white 18%, transparent),
-			transparent 34%
-		);
-		pointer-events: none;
-		border-radius: inherit;
-	}
-
+	/* Inner border */
 	.catalog-card::after {
 		content: '';
 		position: absolute;
