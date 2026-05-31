@@ -1,0 +1,116 @@
+---
+title: Getting Started with LLM Council — AI Deliberation Tutorial
+description: Learn how to get started with LLM Council, the AI deliberation tool for multi-model debate. Configure providers, choose personas, and run your first council session. No signup required.
+date: 2026-05-31
+tags:
+  - beginner
+  - guide
+keywords:
+  - AI deliberation tool tutorial
+  - LLM Council getting started
+  - multi-model AI debate
+  - AI persona council
+  - configure AI providers
+---
+
+<script>
+	const title = 'Getting Started with LLM Council — AI Deliberation Tutorial';
+	const description =
+		'Learn how to get started with LLM Council, the AI deliberation tool for multi-model debate. Configure providers, choose personas, and run your first council session. No signup required.';
+	const canonical = 'https://council.eduard3v.com/tutorials/getting-started-with-llm-council';
+</script>
+
+<svelte:head>
+	<title>{title}</title>
+	<meta name="description" content={description} />
+	<meta property="og:title" content={title} />
+	<meta property="og:description" content={description} />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content={canonical} />
+	<meta name="twitter:card" content="summary" />
+	<link rel="canonical" href={canonical} />
+</svelte:head>
+
+<article class="prose prose-ink mx-auto max-w-3xl px-4 py-8">
+	<h1>{title}</h1>
+
+	LLM Council lets you assemble a panel of AI personas and run structured multi-model debates. Each persona brings a distinct archetype, opinion, and reasoning style. You decide who sits on the council, which AI models power them, and what question to ask. This guide walks through your first session from start to finish.
+
+	## What Is LLM Council?
+
+	LLM Council is an AI deliberation tool that orchestrates conversations between multiple AI personas in a single session. Each persona is powered by a configurable AI model from providers like OpenAI, Anthropic, or Google. The council debates your question, ranks responses, and produces a unified synthesis. Everything runs in your browser with no backend server, and no signup is required.
+
+	## Prerequisites
+
+	- An API key from OpenAI, Anthropic, Google, or OpenRouter
+	- A modern browser (Chrome, Firefox, Safari, Edge)
+	- A question you want the council to debate
+
+	## Step 1: Configure an AI Provider
+
+	Open the [Configuration page](/) and select your provider:
+
+	1. Click **Config** in the navigation panel
+	2. Choose your provider from the dropdown (OpenAI, Anthropic, Google, or OpenRouter)
+	3. Paste your API token into the token field
+	4. Select or type the model name (e.g. `gpt-4o`, `claude-sonnet-4-20250514`, `gemini-2.5-flash`)
+	5. Click **Save to browser**
+
+	Your API key stays in your browser's localStorage. Each request goes directly from your browser to the provider, with no intermediate server.
+
+	## Step 2: Choose Your Personas
+
+	Back on the home page, you will see 12 empty seats. Click **Add** or any empty seat to open the persona catalogue. Pick your first three personas:
+
+	- **The Pragmatist** cuts through noise to what works
+	- **The Builder** thinks in systems and second-order effects
+	- **The Contrarian** challenges every assumption
+
+	You can drag personas to reorder them. The order determines who speaks first during deliberation. Add up to 12 personas, though 3 to 6 works best for focused debate.
+
+	## Step 3: Ask Your First Question
+
+	Type your question into the input at the top of the home page. Good starter questions:
+
+	- "What should humanity prioritise in the next decade?"
+	- "Can a society be both free and equal?"
+	- "Which human instinct causes the most unnecessary suffering?"
+
+	Click **Convene the council** to begin the session.
+
+	## Step 4: Review the Deliberation
+
+	The council speaks one persona at a time. Each speech appears in sequence. After all personas have spoken, the council votes on peer rankings, and the **Council Scribe** produces a unified synthesis that combines every viewpoint into a single response.
+
+	You can copy individual speeches or the full synthesis using the copy buttons. The **Final word** button ends the session and returns you to the home page.
+
+	## Tips for Best Results
+
+	- Use 3 to 6 personas for focused debates. Larger councils produce more varied views but take longer.
+	- Mix archetypes with opposing viewpoints (e.g. The Visionary with The Skeptic) for richer deliberation.
+	- Use different AI models for different personas to get genuinely distinct perspectives.
+	- Save your API key once across sessions. It persists in localStorage.
+
+	## Frequently Asked Questions
+
+	### What do I need to use LLM Council?
+
+	You need an API key from a supported AI provider and a web browser. No signup, no account, no installation.
+
+	### Which AI provider should I use?
+
+	OpenAI offers the widest model selection. Anthropic's Claude models excel at careful reasoning. Google's Gemini models are fast and cost-effective. OpenRouter gives you access to all three through a single key.
+
+	### Can I use the same model for every persona?
+
+	Yes, but using different models for different personas produces more diverse viewpoints. Try pairing GPT-4o with Claude Sonnet 4 and Gemini 2.5 Flash for a multi-model debate.
+
+	## Related Links
+
+	- [All Tutorials](/tutorials)
+	- [LLM Council Home](/)
+
+	## Try It Yourself
+
+	Ready to convene your first council? Open LLM Council, configure your provider, pick your personas, and ask a question. No signup required, just an API key.
+</article>

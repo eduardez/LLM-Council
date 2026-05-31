@@ -11,6 +11,12 @@
 	const phrases = $derived([m.splash_ask(), m.splash_welcome(), m.splash_loading()]);
 
 	onMount(() => {
+		if (localStorage.getItem('council_splash_seen')) {
+			showSplash = false;
+			splashDone = true;
+			return;
+		}
+
 		const t1 = setTimeout(() => {
 			phraseIdx = 1;
 		}, 1400);
@@ -21,6 +27,7 @@
 
 		const t3 = setTimeout(() => {
 			splashDone = true;
+			localStorage.setItem('council_splash_seen', '1');
 		}, 4800);
 
 		return () => {
