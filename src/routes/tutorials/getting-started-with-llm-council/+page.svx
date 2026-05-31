@@ -31,7 +31,7 @@ keywords:
 	<link rel="canonical" href={canonical} />
 </svelte:head>
 
-<article class="prose prose-ink mx-auto max-w-3xl px-4 py-8">
+<article class="prose mx-auto max-w-3xl px-4 py-8">
 	<h1>{title}</h1>
 
 	LLM Council lets you assemble a panel of AI personas and run structured multi-model debates. Each persona brings a distinct archetype, opinion, and reasoning style. You decide who sits on the council, which AI models power them, and what question to ask. This guide walks through your first session from start to finish.

@@ -61,6 +61,20 @@
 		}
 	}
 
+	.tutorials-shell :global(.prose) {
+		--tw-prose-body: var(--color-ink);
+		--tw-prose-headings: var(--color-ink);
+		--tw-prose-links: var(--color-gold);
+		--tw-prose-bold: var(--color-ink);
+		--tw-prose-counters: var(--color-ink-3);
+		--tw-prose-bullets: var(--color-ink-3);
+		--tw-prose-hr: var(--color-parchment-4);
+		--tw-prose-quotes: var(--color-ink-2);
+		--tw-prose-quote-borders: var(--color-parchment-4);
+		--tw-prose-code: var(--color-ink);
+		--tw-prose-pre-bg: var(--color-ink);
+	}
+
 	.tutorials-shell {
 		height: 100dvh;
 		border-radius: 0;
