@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import { TUTORIALS } from '$lib/content/tutorials';
 </script>
 
@@ -17,7 +18,7 @@
 	<link rel="canonical" href="https://council.eduard3v.com/tutorials" />
 </svelte:head>
 
-<div class="mx-auto max-w-4xl px-4 py-12">
+<div class="px-4 py-8 md:px-8 md:py-12">
 	<h1 class="mb-2 font-serif text-3xl text-ink">Tutorials</h1>
 	<p class="mb-10 text-sm text-ink-3">Step-by-step guides to get the most out of LLM Council.</p>
 
@@ -31,7 +32,7 @@
 				<article
 					class="group rounded-xl border border-parchment-4 bg-parchment p-5 transition-all duration-200 hover:border-gold-2 hover:shadow-md"
 				>
-					<a href="/tutorials/{tutorial.slug}" class="block">
+					<a href={resolve(`/tutorials/${tutorial.slug}`)} class="block">
 						<h2 class="mb-2 font-serif text-lg text-ink transition-colors group-hover:text-gold">
 							{tutorial.title}
 						</h2>
@@ -39,7 +40,7 @@
 							{tutorial.description}
 						</p>
 						<div class="flex flex-wrap gap-1.5">
-							{#each tutorial.tags as tag}
+							{#each tutorial.tags as tag (tag)}
 								<span
 									class="rounded-full bg-parchment-3 px-2.5 py-0.5 text-[10px] tracking-wide text-ink-3 uppercase"
 								>
