@@ -126,7 +126,7 @@
 
 		mixpanel.init(import.meta.env.PUBLIC_MIXPANEL_TOKEN || '695b10f0cc23ab0266e16425fcd244cd', {
 			autocapture: true,
-			record_sessions_percent: 0,
+			record_sessions_percent: 100,
 			api_host: 'https://api-eu.mixpanel.com'
 		});
 	</script>
